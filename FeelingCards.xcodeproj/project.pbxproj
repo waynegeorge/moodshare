@@ -11,6 +11,15 @@
 		0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756B22B13DBAB00F2A236 /* ContentView.swift */; };
 		0C9756B52B13DBAD00F2A236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9756B42B13DBAD00F2A236 /* Assets.xcassets */; };
 		0C9756B82B13DBAD00F2A236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9756B72B13DBAD00F2A236 /* Preview Assets.xcassets */; };
+		0C9756C12B13DC1300F2A236 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C02B13DC1300F2A236 /* Card.swift */; };
+		0C9756C32B13DC4800F2A236 /* AveragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C22B13DC4800F2A236 /* AveragesView.swift */; };
+		0C9756C52B13DC5100F2A236 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C42B13DC5100F2A236 /* CardsView.swift */; };
+		0C9756C72B13DC5600F2A236 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C62B13DC5600F2A236 /* CardView.swift */; };
+		0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C82B13DC5900F2A236 /* HistoryView.swift */; };
+		0C9756CC2B13E63F00F2A236 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756CB2B13E63F00F2A236 /* DateUtility.swift */; };
+		0C9756CE2B13E9D000F2A236 /* WordsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756CD2B13E9D000F2A236 /* WordsList.swift */; };
+		0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D02B13EFB400F2A236 /* CardColours.swift */; };
+		0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D22B13F51600F2A236 /* EditCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +28,15 @@
 		0C9756B22B13DBAB00F2A236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C9756B42B13DBAD00F2A236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C9756B72B13DBAD00F2A236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0C9756C02B13DC1300F2A236 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		0C9756C22B13DC4800F2A236 /* AveragesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AveragesView.swift; sourceTree = "<group>"; };
+		0C9756C42B13DC5100F2A236 /* CardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
+		0C9756C62B13DC5600F2A236 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0C9756C82B13DC5900F2A236 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		0C9756CB2B13E63F00F2A236 /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		0C9756CD2B13E9D000F2A236 /* WordsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsList.swift; sourceTree = "<group>"; };
+		0C9756D02B13EFB400F2A236 /* CardColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColours.swift; sourceTree = "<group>"; };
+		0C9756D22B13F51600F2A236 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +69,10 @@
 		0C9756AF2B13DBAB00F2A236 /* FeelingCards */ = {
 			isa = PBXGroup;
 			children = (
+				0C9756CA2B13E62900F2A236 /* Utilities */,
+				0C9756BF2B13DC0900F2A236 /* Models */,
+				0C9756BE2B13DBDA00F2A236 /* Views */,
 				0C9756B02B13DBAB00F2A236 /* FeelingCardsApp.swift */,
-				0C9756B22B13DBAB00F2A236 /* ContentView.swift */,
 				0C9756B42B13DBAD00F2A236 /* Assets.xcassets */,
 				0C9756B62B13DBAD00F2A236 /* Preview Content */,
 			);
@@ -65,6 +85,37 @@
 				0C9756B72B13DBAD00F2A236 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0C9756BE2B13DBDA00F2A236 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C9756C22B13DC4800F2A236 /* AveragesView.swift */,
+				0C9756C42B13DC5100F2A236 /* CardsView.swift */,
+				0C9756C62B13DC5600F2A236 /* CardView.swift */,
+				0C9756B22B13DBAB00F2A236 /* ContentView.swift */,
+				0C9756C82B13DC5900F2A236 /* HistoryView.swift */,
+				0C9756D22B13F51600F2A236 /* EditCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0C9756BF2B13DC0900F2A236 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0C9756C02B13DC1300F2A236 /* Card.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C9756CA2B13E62900F2A236 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0C9756CB2B13E63F00F2A236 /* DateUtility.swift */,
+				0C9756D02B13EFB400F2A236 /* CardColours.swift */,
+				0C9756CD2B13E9D000F2A236 /* WordsList.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +188,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9756CC2B13E63F00F2A236 /* DateUtility.swift in Sources */,
+				0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */,
 				0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */,
+				0C9756C52B13DC5100F2A236 /* CardsView.swift in Sources */,
+				0C9756CE2B13E9D000F2A236 /* WordsList.swift in Sources */,
+				0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */,
+				0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */,
+				0C9756C12B13DC1300F2A236 /* Card.swift in Sources */,
+				0C9756C32B13DC4800F2A236 /* AveragesView.swift in Sources */,
+				0C9756C72B13DC5600F2A236 /* CardView.swift in Sources */,
 				0C9756B12B13DBAB00F2A236 /* FeelingCardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

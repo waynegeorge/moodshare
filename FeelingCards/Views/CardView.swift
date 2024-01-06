@@ -9,15 +9,17 @@ import SwiftData
 import SwiftUI
 
 struct CardView: View {
-    var card : Card
+    @Bindable var card : Card
     
     var body: some View {
         VStack {
-            Text(DateUtility.formattedDate(Date.now))
-                .frame(width: 200)
+            HStack {
+                Text(DateUtility.formattedDate(Date.now))
+                Spacer()
+            }
             
             if (card.score >= 1 && card.score <= 10) {
-                Text("Your score is \(card.score)")
+                Text("Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])")
                     .padding()
                     .font(.title2)
             } else {
@@ -51,7 +53,7 @@ struct CardView: View {
                 VStack {
                     Text("Positives of the day:")
                         .bold()
-                    Text(card.positives)
+                    TextEditor(text: $card.positives)
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical)
@@ -67,21 +69,23 @@ struct CardView: View {
                 .padding(.vertical)
             }
         }
-        .frame(minWidth: 100, minHeight: 200)
+        //.frame(maxWidth: .infinity)
         
         .padding()
         .background(CardColours.color(for: card.score))
-        .cornerRadius(10)
+        //.cornerRadius(20.2)
     }
 }
+
 
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Card.self, configurations: config)
-        let words = WordList.words
-        let example = Card(words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return CardView(card: example)
+        let words = CardDetails.words
+        let example1 = Card(score: 0)
+        let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
+        return CardView(card: example2)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

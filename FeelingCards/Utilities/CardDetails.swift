@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct WordList {
+struct CardDetails {
     static let words: [String] = ["Reflective", "Happy", "Hopeful", "Stressed", "Nervous", "Anxious", "Insecure", "Confused", "Proud", "Tired", "Hurt", "Excited", "Disappointed", "Annoyed", "Inspired", "Frustrated", "Calm", "Neutral", "Lonely", "Low", "Secure", "Confident", "Scared", "Guilty", "Sad", "Overwhelmed", "Rejected", "Abandoned"]
+    
+    static let emojiScale: [String] = ["😣", "😞", "😔", "☹️", "😐", "🙂", "😊", "😀", "😃", "😄", "❓"]
 }

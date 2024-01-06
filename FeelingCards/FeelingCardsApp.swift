@@ -13,5 +13,6 @@ struct FeelingCardsApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Card.self)
     }
 }

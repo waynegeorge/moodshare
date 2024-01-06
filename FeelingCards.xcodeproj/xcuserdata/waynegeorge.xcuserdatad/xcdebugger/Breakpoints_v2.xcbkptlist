@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "87906B83-F13C-4410-A62E-678E84F3E6AA"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ACDFDFDF-B55B-4454-B2CD-16A367D617C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FeelingCards/Views/CardView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FeelingCards/Views/CardView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359 - 8677dae695282033"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FeelingCards.CardView.body.getter : some"
+                  moduleName = "FeelingCards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waynegeorge/Library/Mobile%20Documents/com~apple~CloudDocs/My%20App%20Portfolio/FeelingCards/FeelingCards/Views/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "572">
+               </Location>
+               <Location
+                  uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359 - 8677dae695282010"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FeelingCards.CardView.body.getter : some"
+                  moduleName = "FeelingCards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waynegeorge/Library/Mobile%20Documents/com~apple~CloudDocs/My%20App%20Portfolio/FeelingCards/FeelingCards/Views/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "624">
+               </Location>
+               <Location
+                  uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359 - 8677dae695282033"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FeelingCards.CardView.body.getter : some"
+                  moduleName = "FeelingCards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waynegeorge/Library/Mobile%20Documents/com~apple~CloudDocs/My%20App%20Portfolio/FeelingCards/FeelingCards/Views/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "624">
+               </Location>
+               <Location
+                  uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359 - 8677dae695282033"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FeelingCards.CardView.body.getter : some"
+                  moduleName = "FeelingCards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waynegeorge/Library/Mobile%20Documents/com~apple~CloudDocs/My%20App%20Portfolio/FeelingCards/FeelingCards/Views/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359 - 8677dae695282033"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FeelingCards.CardView.body.getter : some"
+                  moduleName = "FeelingCards"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/waynegeorge/Library/Mobile%20Documents/com~apple~CloudDocs/My%20App%20Portfolio/FeelingCards/FeelingCards/Views/CardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "420">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

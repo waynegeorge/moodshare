@@ -21,16 +21,17 @@ struct CardColours {
         var color: Color {
             switch self {
             case .red:
-                return Color(red: 1.0, green: 0.0, blue: 0.0) // Red
+                return Color(red: 1.0, green: 0.5, blue: 0.5) // Pastel Red
             case .orange:
-                return Color(red: 1.0, green: 0.65, blue: 0.0) // Orange
+                return Color(red: 1.0, green: 0.75, blue: 0.5) // Pastel Orange
             case .yellow:
-                return Color(red: 1.0, green: 1.0, blue: 0.0) // Yellow
+                return Color(red: 1.0, green: 1.0, blue: 0.6) // Pastel Yellow
             case .lime:
-                return Color(red: 0.75, green: 1.0, blue: 0.0) // Lime Green
+                return Color(red: 0.85, green: 1.0, blue: 0.5) // Pastel Lime
             case .green:
-                return Color(red: 0.0, green: 1.0, blue: 0.0) // Green
+                return Color(red: 0.5, green: 1.0, blue: 0.5) // Pastel Green
             }
         }
+
     }
 }

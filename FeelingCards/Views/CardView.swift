@@ -15,17 +15,22 @@ struct CardView: View {
         VStack {
             HStack {
                 Text(DateUtility.formattedDate(Date.now))
-                Spacer()
+                    .foregroundColor(.black)
+                    .bold()
+                    .frame(width: 200, height: 30)
+                    .border(Color.black, width: 2)
             }
             
             if (card.score >= 1 && card.score <= 10) {
                 Text("Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])")
                     .padding()
                     .font(.title2)
+                    .foregroundColor(.black)
             } else {
                 Text("Tap to give your score for today")
                     .padding()
                     .font(.title2)
+                    .foregroundColor(.black)
             }
             
             if (card.toShare != "") {
@@ -36,6 +41,7 @@ struct CardView: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical)
+                .foregroundColor(.black)
             }
             
             if (card.words.count != 0) {
@@ -53,7 +59,7 @@ struct CardView: View {
                 VStack {
                     Text("Positives of the day:")
                         .bold()
-                    TextEditor(text: $card.positives)
+                    Text(card.positives)
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical)
@@ -68,12 +74,11 @@ struct CardView: View {
                 .padding(.horizontal, 10)
                 .padding(.vertical)
             }
-        }
-        //.frame(maxWidth: .infinity)
-        
+        }        
         .padding()
         .background(CardColours.color(for: card.score))
-        //.cornerRadius(20.2)
+        .foregroundColor(.black)
+        .cornerRadius(20.2)
     }
 }
 

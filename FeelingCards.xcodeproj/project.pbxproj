@@ -21,6 +21,7 @@
 		0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D02B13EFB400F2A236 /* CardColours.swift */; };
 		0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D22B13F51600F2A236 /* EditCardView.swift */; };
 		0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D42B1401F600F2A236 /* SampleCards.swift */; };
+		0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45982B4F2E1700643716 /* Previewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		0C9756D02B13EFB400F2A236 /* CardColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColours.swift; sourceTree = "<group>"; };
 		0C9756D22B13F51600F2A236 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		0C9756D42B1401F600F2A236 /* SampleCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCards.swift; sourceTree = "<group>"; };
+		0CDD45982B4F2E1700643716 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				0C9756D02B13EFB400F2A236 /* CardColours.swift */,
 				0C9756CD2B13E9D000F2A236 /* CardDetails.swift */,
 				0C9756D42B1401F600F2A236 /* SampleCards.swift */,
+				0CDD45982B4F2E1700643716 /* Previewer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */,
 				0C9756CC2B13E63F00F2A236 /* DateUtility.swift in Sources */,
 				0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */,
 				0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */,

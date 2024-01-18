@@ -12,13 +12,18 @@ struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
+    
+        
     var body: some View {
-        NavigationView {
-            //            List(cards, id: \.self) { card in
-            //                CardView(card: card)
-            //            }
+        List {
+            ForEach(cards) { card in
+                CardView(card: card)
+                    .listRowSpacing(20)
+                    .listRowBackground(CardColours.color(for: card.score))
+                    .padding(.vertical, 5)
+                    .cornerRadius(9)
+            }
         }
-        .navigationDestination(for: Card.self, destination: CardView.init)
         .navigationTitle("Feeling Cards")
         .toolbar {
             Button("Add Samples", action: addSamples)
@@ -50,14 +55,13 @@ struct CardsView: View {
 
 
 
-//#Preview {
-//    do {
-//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-//        let container = try ModelContainer(for: Card.self, configurations: config)
-//
-//        return CardsView()
-//            .modelContainer(container)
-//    } catch {
-//        fatalError("Failed to create model container.")
-//    }
-//}
+#Preview {
+    do {
+        let previewer = try Previewer()
+
+        return ContentView()
+            .modelContainer(previewer.container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}

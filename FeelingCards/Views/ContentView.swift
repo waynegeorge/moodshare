@@ -33,6 +33,7 @@ struct ContentView: View {
                     .tag(0)
             }
         }
+        .navigationTitle("Hello")
     }
 }
 

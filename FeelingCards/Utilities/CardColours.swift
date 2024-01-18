@@ -9,15 +9,16 @@ import SwiftUI
 
 struct CardColours {
     static func color(for value: Int) -> Color {
-        guard value >= 1, value <= 10 else { return .gray }
-
+        guard value >= 1, value <= 10 else { return Color(red: 0.95, green: 0.95, blue: 0.95)
+        }
+        
         let index = (value - 1) / 2
         return CardColor.allCases[index].color
     }
-
+    
     enum CardColor: Int, CaseIterable {
         case red, orange, yellow, lime, green
-
+        
         var color: Color {
             switch self {
             case .red:
@@ -32,6 +33,6 @@ struct CardColours {
                 return Color(red: 0.5, green: 1.0, blue: 0.5) // Pastel Green
             }
         }
-
+        
     }
 }

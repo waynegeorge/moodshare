@@ -5,14 +5,115 @@
 //  Created by Wayne George on 26/11/2023.
 //
 
+import SwiftData
 import SwiftUI
 
 struct EditCardView: View {
+    @Bindable var card : Card
+    let numbers = Array(1...10)
+    
     var body: some View {
-        Text("EditCardView")
+        VStack {
+            HStack {
+                Text(DateUtility.formattedDate(Date.now))
+                    .foregroundColor(.black)
+                    .bold()
+                    .frame(width: 200, height: 30)
+                    .border(Color.black, width: 2)
+            }
+            
+            Picker("How do you feel today?", selection: $card.score) {
+                ForEach(numbers, id: \.self) { number in
+                    Text("\(number) \(CardDetails.emojiScale[number - 1])")
+                        .foregroundColor(.black)  // Set text color to black
+                        .font(.headline)          // Increase font size
+                        .tag(number)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
+            .frame(width: 300, height: 150) // Set the frame size of the Picker
+
+            
+//            if (card.score >= 1 && card.score <= 10) {
+//                Text("Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])")
+//                    .padding()
+//                    .font(.title2)
+//                    .foregroundColor(.black)
+//            }
+//            
+//            else if Calendar.current.isDateInToday(card.date) {
+//                Text("Tap to give your score for today")
+//                    .padding()
+//                    .font(.title2)
+//                    .foregroundColor(.black)
+//            }
+//            
+//            else {
+//                Text("No score given for this day")
+//                    .padding()
+//                    .font(.title2)
+//                    .foregroundColor(.black)
+//            }
+//            
+//            if (card.toShare != "") {
+//                VStack {
+//                    Text("Reason for your score:")
+//                        .bold()
+//                    Text(card.toShare)
+//                }
+//                .padding(.horizontal, 10)
+//                .padding(.vertical)
+//                .foregroundColor(.black)
+//            }
+//            
+//            if (card.words.count != 0) {
+//                VStack {
+//                    Text("Words: ")
+//                        .bold()
+//                    Text(card.words.joined(separator: ", ") )
+//                        .italic()
+//                }
+//                .padding(.horizontal, 10)
+//                .padding(.vertical)
+//            }
+//            
+//            if (card.positives != "") {
+//                VStack {
+//                    Text("Positives of the day:")
+//                        .bold()
+//                    Text(card.positives)
+//                }
+//                .padding(.horizontal, 10)
+//                .padding(.vertical)
+//            }
+//            
+//            if (card.liked != "") {
+//                VStack {
+//                    Text("Liked about yourself today:")
+//                        .bold()
+//                    Text(card.liked)
+//                }
+//                .padding(.horizontal, 10)
+//                .padding(.vertical)
+//            }
+        }
+        .padding()
+        .background(CardColours.color(for: card.score))
+        .foregroundColor(.black)
+        .cornerRadius(20.2)
     }
 }
 
 #Preview {
-    EditCardView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Card.self, configurations: config)
+        let words = CardDetails.words
+        let example1 = Card(score: 0)
+        let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
+        return EditCardView(card: example1)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
+    }
 }

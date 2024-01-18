@@ -26,8 +26,17 @@ struct CardView: View {
                     .padding()
                     .font(.title2)
                     .foregroundColor(.black)
-            } else {
+            }
+            
+            else if Calendar.current.isDateInToday(card.date) {
                 Text("Tap to give your score for today")
+                    .padding()
+                    .font(.title2)
+                    .foregroundColor(.black)
+            }
+            
+            else {
+                Text("No score given for this day")
                     .padding()
                     .font(.title2)
                     .foregroundColor(.black)
@@ -74,7 +83,7 @@ struct CardView: View {
                 .padding(.horizontal, 10)
                 .padding(.vertical)
             }
-        }        
+        }
         .padding()
         .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
@@ -90,7 +99,7 @@ struct CardView: View {
         let words = CardDetails.words
         let example1 = Card(score: 0)
         let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return CardView(card: example2)
+        return CardView(card: example1)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

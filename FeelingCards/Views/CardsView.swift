@@ -12,44 +12,55 @@ struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
-    
-        
     var body: some View {
-        List {
-            ForEach(cards) { card in
-                CardView(card: card)
-                    .listRowSpacing(20)
-                    .listRowBackground(CardColours.color(for: card.score))
-                    .padding(.vertical, 5)
-                    .cornerRadius(9)
+        NavigationView {
+            List {
+                if let firstCard = cards.first {
+                    NavigationLink {
+                        EditCardView(card: firstCard) // Pass the first card for editing
+                    } label: {
+                        CardView(card: firstCard) // Display the first card as the link label
+                    }
+                    .listRowBackground(CardColours.color(for: firstCard.score))
+                }
+                
+                ForEach(cards.dropFirst()) { card in
+                    CardView(card: card)
+                        .listRowSpacing(20)
+                        .listRowBackground(CardColours.color(for: card.score))
+                        .padding(.vertical, 5)
+                        .cornerRadius(9)
+                }
+            }
+            .navigationTitle("Feelings Share")
+            .toolbar {
+                Button("Share", systemImage: "square.and.arrow.up", action: share)
+                
+            }
+            .onAppear {  // Move card checking and creation logic here
+                checkForNewCard()
             }
         }
-        .navigationTitle("Feeling Cards")
-        .toolbar {
-            Button("Add Samples", action: addSamples)
-            
+        .environment(\.modelContext, modelContext)
+    }
+    
+    func share() {
+        
+    }
+    
+    func checkForNewCard() {
+        if let latestCard = cards.sorted(by: { $0.date > $1.date }).first {
+            if !Calendar.current.isDateInToday(latestCard.date) {
+                addNewCard()
+            }
+        } else {
+            addNewCard() // For new install
         }
     }
-    func addSamples() {
-        //let one = Card(score: 0)
-        
-        let two = Card(score: 6, words: [CardDetails.words[0], CardDetails.words[1], CardDetails.words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        
-        let three = Card(score: 8, words: [CardDetails.words[0], CardDetails.words[1], CardDetails.words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        
-        let four = Card(score: 4, words: [CardDetails.words[0], CardDetails.words[1], CardDetails.words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        
-        let five = Card(score: 5, words: [CardDetails.words[0], CardDetails.words[1], CardDetails.words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        
-        
-        let six = Card(score: 2, words: [CardDetails.words[0], CardDetails.words[1], CardDetails.words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        
-        //modelContext.insert(one)
-        modelContext.insert(two)
-        modelContext.insert(three)
-        modelContext.insert(four)
-        modelContext.insert(five)
-        modelContext.insert(six)
+    
+    func addNewCard() {
+        let newCard = Card()
+        modelContext.insert(newCard)
     }
 }
 
@@ -58,7 +69,7 @@ struct CardsView: View {
 #Preview {
     do {
         let previewer = try Previewer()
-
+        
         return ContentView()
             .modelContainer(previewer.container)
     } catch {

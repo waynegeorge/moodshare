@@ -15,16 +15,16 @@ struct CardsView: View {
     var body: some View {
         NavigationView {
             List {
-                if let firstCard = cards.first {
+                if let lastCard = cards.last {
                     NavigationLink {
-                        EditCardView(card: firstCard) // Pass the first card for editing
+                        EditCardView(card: lastCard)
                     } label: {
-                        CardView(card: firstCard) // Display the first card as the link label
+                        CardView(card: lastCard)
                     }
-                    .listRowBackground(CardColours.color(for: firstCard.score))
+                    .listRowBackground(CardColours.color(for: lastCard.score))
                 }
                 
-                ForEach(cards.dropFirst()) { card in
+                ForEach(cards.dropLast().reversed()) { card in
                     CardView(card: card)
                         .listRowSpacing(20)
                         .listRowBackground(CardColours.color(for: card.score))
@@ -35,9 +35,8 @@ struct CardsView: View {
             .navigationTitle("Feelings Share")
             .toolbar {
                 Button("Share", systemImage: "square.and.arrow.up", action: share)
-                
             }
-            .onAppear {  // Move card checking and creation logic here
+            .onAppear {
                 checkForNewCard()
             }
         }
@@ -45,26 +44,30 @@ struct CardsView: View {
     }
     
     func share() {
-        
+        // Your share logic
     }
     
     func checkForNewCard() {
-        if let latestCard = cards.sorted(by: { $0.date > $1.date }).first {
-            if !Calendar.current.isDateInToday(latestCard.date) {
-                addNewCard()
-            }
-        } else {
-            addNewCard() // For new install
+        if cards.isEmpty || !isToday(date: cards.last!.date) {
+            addNewCard()
         }
     }
     
     func addNewCard() {
-        let newCard = Card()
+        let newCard = Card(date: Date())
+        print("addNewCard: \(newCard.date)")
         modelContext.insert(newCard)
     }
+    
+    func isToday(date: Date) -> Bool {
+        print("Date in to isToday \(date)")
+        let calendar = Calendar.current
+        let todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+        let selectedDateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        
+        return todayComponents == selectedDateComponents
+    }
 }
-
-
 
 #Preview {
     do {

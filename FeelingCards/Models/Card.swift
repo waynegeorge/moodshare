@@ -18,13 +18,18 @@ class Card {
     var liked: String
     var toShare: String
     
-    init(date: Date =  .now, complete: Bool = false, score: Int = 0, words: [String] = [], positives: String = "", liked: String = "", toShare: String = "") {
-        self.date = date
-        self.complete = complete
-        self.score = score
-        self.words = words
-        self.positives = positives
-        self.liked = liked
-        self.toShare = toShare
-    }
+    init(date: Date = Date(),
+         complete: Bool = false,
+         score: Int = 0, words: [String] = [],
+         positives: String = "",
+         liked: String = "",
+         toShare: String = "") {
+            self.date = date
+            self.complete = complete
+            self.score = score
+            self.words = words
+            self.positives = positives
+            self.liked = liked
+            self.toShare = toShare
+        }
 }

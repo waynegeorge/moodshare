@@ -14,33 +14,27 @@ struct CardView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(DateUtility.formattedDate(Date.now))
+                Text(DateUtility.formattedDate(card.date))
                     .foregroundColor(.black)
                     .bold()
                     .frame(width: 200, height: 30)
                     .border(Color.black, width: 2)
             }
             
-            if (card.score >= 1 && card.score <= 10) {
-                Text("Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])")
-                    .padding()
-                    .font(.title2)
-                    .foregroundColor(.black)
+            Group {
+                if card.score >= 1 && card.score <= 10 {
+                    Text(Calendar.current.isDateInToday(card.date) ?
+                         "Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])" :
+                            "Your score was \(card.score) \(CardDetails.emojiScale[card.score - 1])")
+                } else if Calendar.current.isDateInToday(card.date) {
+                    Text("Tap to give your score for today")
+                } else {
+                    Text("No score given")
+                }
             }
-            
-            else if Calendar.current.isDateInToday(card.date) {
-                Text("Tap to give your score for today")
-                    .padding()
-                    .font(.title2)
-                    .foregroundColor(.black)
-            }
-            
-            else {
-                Text("No score given for this day")
-                    .padding()
-                    .font(.title2)
-                    .foregroundColor(.black)
-            }
+            .padding()
+            .font(.title2)
+            .foregroundColor(.black)
             
             if (card.toShare != "") {
                 VStack {
@@ -98,7 +92,7 @@ struct CardView: View {
         let container = try ModelContainer(for: Card.self, configurations: config)
         let words = CardDetails.words
         let example1 = Card(score: 0)
-        let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
+        let example2 = Card(score: 8, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
         return CardView(card: example1)
             .modelContainer(container)
     } catch {

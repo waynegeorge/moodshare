@@ -28,3 +28,9 @@ class DateUtility {
         }
     }
 }
+
+extension Date {
+    var midnight: Date {
+        Calendar.current.startOfDay(for: self)
+    }
+}

@@ -34,73 +34,14 @@ struct EditCardView: View {
             .frame(width: 300, height: 150) // Set the frame size of the Picker
 
             
-//            if (card.score >= 1 && card.score <= 10) {
-//                Text("Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])")
-//                    .padding()
-//                    .font(.title2)
-//                    .foregroundColor(.black)
-//            }
-//            
-//            else if Calendar.current.isDateInToday(card.date) {
-//                Text("Tap to give your score for today")
-//                    .padding()
-//                    .font(.title2)
-//                    .foregroundColor(.black)
-//            }
-//            
-//            else {
-//                Text("No score given for this day")
-//                    .padding()
-//                    .font(.title2)
-//                    .foregroundColor(.black)
-//            }
-//            
-//            if (card.toShare != "") {
-//                VStack {
-//                    Text("Reason for your score:")
-//                        .bold()
-//                    Text(card.toShare)
-//                }
-//                .padding(.horizontal, 10)
-//                .padding(.vertical)
-//                .foregroundColor(.black)
-//            }
-//            
-//            if (card.words.count != 0) {
-//                VStack {
-//                    Text("Words: ")
-//                        .bold()
-//                    Text(card.words.joined(separator: ", ") )
-//                        .italic()
-//                }
-//                .padding(.horizontal, 10)
-//                .padding(.vertical)
-//            }
-//            
-//            if (card.positives != "") {
-//                VStack {
-//                    Text("Positives of the day:")
-//                        .bold()
-//                    Text(card.positives)
-//                }
-//                .padding(.horizontal, 10)
-//                .padding(.vertical)
-//            }
-//            
-//            if (card.liked != "") {
-//                VStack {
-//                    Text("Liked about yourself today:")
-//                        .bold()
-//                    Text(card.liked)
-//                }
-//                .padding(.horizontal, 10)
-//                .padding(.vertical)
-//            }
+//
         }
         .padding()
         .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
-        .cornerRadius(20.2)
+        .cornerRadius(9)
+        
+        Spacer()
     }
 }
 

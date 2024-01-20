@@ -24,7 +24,7 @@ struct CardView: View {
             Group {
                 if card.score >= 1 && card.score <= 10 {
                     Text(Calendar.current.isDateInToday(card.date) ?
-                         "Your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])" :
+                         "Today your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])" :
                             "Your score was \(card.score) \(CardDetails.emojiScale[card.score - 1])")
                 } else if Calendar.current.isDateInToday(card.date) {
                     Text("Tap to give your score for today")

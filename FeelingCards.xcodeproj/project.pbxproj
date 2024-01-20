@@ -21,6 +21,7 @@
 		0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D02B13EFB400F2A236 /* CardColours.swift */; };
 		0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D22B13F51600F2A236 /* EditCardView.swift */; };
 		0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D42B1401F600F2A236 /* SampleCards.swift */; };
+		0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */; };
 		0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45982B4F2E1700643716 /* Previewer.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		0C9756D02B13EFB400F2A236 /* CardColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColours.swift; sourceTree = "<group>"; };
 		0C9756D22B13F51600F2A236 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		0C9756D42B1401F600F2A236 /* SampleCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCards.swift; sourceTree = "<group>"; };
+		0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		0CDD45982B4F2E1700643716 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				0C9756B22B13DBAB00F2A236 /* ContentView.swift */,
 				0C9756C82B13DC5900F2A236 /* HistoryView.swift */,
 				0C9756D22B13F51600F2A236 /* EditCardView.swift */,
+				0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */,
 				0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */,
 				0C9756C12B13DC1300F2A236 /* Card.swift in Sources */,
+				0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */,
 				0C9756C32B13DC4800F2A236 /* AveragesView.swift in Sources */,
 				0C9756C72B13DC5600F2A236 /* CardView.swift in Sources */,
 				0C9756B12B13DBAB00F2A236 /* FeelingCardsApp.swift in Sources */,

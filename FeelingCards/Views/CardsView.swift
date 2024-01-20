@@ -12,6 +12,8 @@ struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
+    @State private var showingShareSheet = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -30,14 +32,26 @@ struct CardsView: View {
                         .listRowBackground(CardColours.color(for: card.score))
                         .padding(.vertical, 5)
                         .cornerRadius(9)
+                        .opacity(0.5)
                 }
             }
             .navigationTitle("Feelings Share")
             .toolbar {
-                Button("Share", systemImage: "square.and.arrow.up", action: share)
+                Button("Share todays's score", systemImage: "square.and.arrow.up"){
+                    showingShareSheet = true
+                }
             }
             .onAppear {
-                checkForNewCard()
+                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                    checkForNewCard()
+                }
+                
+            }
+            .sheet(isPresented: $showingShareSheet) {
+//                if let lastCard = cards.last {
+//                    ShareView(card: lastCard)
+//                }
+                Text("No Cards")
             }
         }
         .environment(\.modelContext, modelContext)
@@ -54,9 +68,18 @@ struct CardsView: View {
     }
     
     func addNewCard() {
-        let newCard = Card(date: Date())
-        print("addNewCard: \(newCard.date)")
-        modelContext.insert(newCard)
+        let newCardDate = Calendar.current.startOfDay(for: Date())
+        
+        // Check if a card with the same date already exists
+        let existingCard = cards.first { card in
+            Calendar.current.isDate(card.date, inSameDayAs: newCardDate)
+        }
+        
+        if existingCard == nil {
+            let newCard = Card(date: newCardDate)
+            print("addNewCard: \(newCard.date)")
+            modelContext.insert(newCard)
+        }
     }
     
     func isToday(date: Date) -> Bool {

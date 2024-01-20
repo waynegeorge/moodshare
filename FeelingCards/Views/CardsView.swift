@@ -48,10 +48,10 @@ struct CardsView: View {
                 
             }
             .sheet(isPresented: $showingShareSheet) {
-//                if let lastCard = cards.last {
-//                    ShareView(card: lastCard)
-//                }
-                Text("No Cards")
+                if let lastCard = cards.last {
+                    //ShareView(itemsToShare: [lastCard.score])
+                    ShareView(itemsToShare: ["Today I feel like a \(lastCard.score) \(CardDetails.emojiScale[lastCard.score - 1])."])
+                }
             }
         }
         .environment(\.modelContext, modelContext)

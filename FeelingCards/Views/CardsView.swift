@@ -13,6 +13,7 @@ struct CardsView: View {
     @Query var cards: [Card]
     
     @State private var showingShareSheet = false
+    @State private var showingSettingsSheet = false
     
     var body: some View {
         NavigationView {
@@ -23,13 +24,13 @@ struct CardsView: View {
                     } label: {
                         CardView(card: lastCard)
                     }
-                    .listRowBackground(CardColours.color(for: lastCard.score))
+                    .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: lastCard.score), CardColours.color(for: lastCard.score - 1)]), startPoint: .leading, endPoint: .trailing))
                 }
                 
                 ForEach(cards.dropLast().reversed()) { card in
                     CardView(card: card)
                         .listRowSpacing(20)
-                        .listRowBackground(CardColours.color(for: card.score))
+                        .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
                         .padding(.vertical, 5)
                         .cornerRadius(9)
                         .opacity(0.5)
@@ -37,6 +38,9 @@ struct CardsView: View {
             }
             .navigationTitle("Feelings Share")
             .toolbar {
+                Button("Settings", systemImage: "gear"){
+                    showingSettingsSheet = true
+                }
                 Button("Share todays's score", systemImage: "square.and.arrow.up"){
                     showingShareSheet = true
                 }
@@ -53,8 +57,13 @@ struct CardsView: View {
                     ShareView(itemsToShare: ["Today I feel like a \(lastCard.score) \(CardDetails.emojiScale[lastCard.score - 1])."])
                 }
             }
+            .sheet(isPresented: $showingSettingsSheet) {
+                SettingsView()
+            }
         }
+        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
         .environment(\.modelContext, modelContext)
+        .preferredColorScheme(.dark)
     }
     
     func share() {

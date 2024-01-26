@@ -57,29 +57,9 @@ struct CardView: View {
                 .padding(.horizontal, 10)
                 .padding(.vertical)
             }
-            
-            if (card.positives != "") {
-                VStack {
-                    Text("Positives of the day:")
-                        .bold()
-                    Text(card.positives)
-                }
-                .padding(.horizontal, 10)
-                .padding(.vertical)
-            }
-            
-            if (card.liked != "") {
-                VStack {
-                    Text("Liked about yourself today:")
-                        .bold()
-                    Text(card.liked)
-                }
-                .padding(.horizontal, 10)
-                .padding(.vertical)
-            }
         }
         .padding()
-        .background(CardColours.color(for: card.score))
+        .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
         .foregroundColor(.black)
         .cornerRadius(20.2)
     }
@@ -93,7 +73,7 @@ struct CardView: View {
         let words = CardDetails.words
         let example1 = Card(score: 0)
         let example2 = Card(score: 8, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return CardView(card: example1)
+        return CardView(card: example2)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

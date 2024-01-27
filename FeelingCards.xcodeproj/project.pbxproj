@@ -10,6 +10,7 @@
 		0C8715422B62F18F005F2557 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715412B62F18F005F2557 /* WordItem.swift */; };
 		0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */; };
 		0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715452B62F3FA005F2557 /* FlowLayout.swift */; };
+		0C8715482B63EF58005F2557 /* ChooseReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715472B63EF58005F2557 /* ChooseReasonView.swift */; };
 		0C9756B12B13DBAB00F2A236 /* FeelingCardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756B02B13DBAB00F2A236 /* FeelingCardsApp.swift */; };
 		0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756B22B13DBAB00F2A236 /* ContentView.swift */; };
 		0C9756B52B13DBAD00F2A236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9756B42B13DBAD00F2A236 /* Assets.xcassets */; };
@@ -22,7 +23,7 @@
 		0C9756CC2B13E63F00F2A236 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756CB2B13E63F00F2A236 /* DateUtility.swift */; };
 		0C9756CE2B13E9D000F2A236 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756CD2B13E9D000F2A236 /* CardDetails.swift */; };
 		0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D02B13EFB400F2A236 /* CardColours.swift */; };
-		0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D22B13F51600F2A236 /* EditCardView.swift */; };
+		0C9756D32B13F51600F2A236 /* ChooseScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D22B13F51600F2A236 /* ChooseScoreView.swift */; };
 		0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D42B1401F600F2A236 /* SampleCards.swift */; };
 		0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */; };
 		0CCEB4BA2B5BFA890070FF1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */; };
@@ -33,6 +34,7 @@
 		0C8715412B62F18F005F2557 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItem.swift; sourceTree = "<group>"; };
 		0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordsView.swift; sourceTree = "<group>"; };
 		0C8715452B62F3FA005F2557 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		0C8715472B63EF58005F2557 /* ChooseReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseReasonView.swift; sourceTree = "<group>"; };
 		0C9756AD2B13DBAB00F2A236 /* FeelingCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelingCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9756B02B13DBAB00F2A236 /* FeelingCardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingCardsApp.swift; sourceTree = "<group>"; };
 		0C9756B22B13DBAB00F2A236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		0C9756CB2B13E63F00F2A236 /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		0C9756CD2B13E9D000F2A236 /* CardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetails.swift; sourceTree = "<group>"; };
 		0C9756D02B13EFB400F2A236 /* CardColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColours.swift; sourceTree = "<group>"; };
-		0C9756D22B13F51600F2A236 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		0C9756D22B13F51600F2A236 /* ChooseScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseScoreView.swift; sourceTree = "<group>"; };
 		0C9756D42B1401F600F2A236 /* SampleCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCards.swift; sourceTree = "<group>"; };
 		0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -109,10 +111,11 @@
 				0C9756C62B13DC5600F2A236 /* CardView.swift */,
 				0C9756B22B13DBAB00F2A236 /* ContentView.swift */,
 				0C9756C82B13DC5900F2A236 /* HistoryView.swift */,
-				0C9756D22B13F51600F2A236 /* EditCardView.swift */,
 				0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */,
 				0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */,
+				0C9756D22B13F51600F2A236 /* ChooseScoreView.swift */,
 				0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */,
+				0C8715472B63EF58005F2557 /* ChooseReasonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,8 +221,9 @@
 				0C9756C52B13DC5100F2A236 /* CardsView.swift in Sources */,
 				0C9756CE2B13E9D000F2A236 /* CardDetails.swift in Sources */,
 				0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */,
-				0C9756D32B13F51600F2A236 /* EditCardView.swift in Sources */,
+				0C9756D32B13F51600F2A236 /* ChooseScoreView.swift in Sources */,
 				0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */,
+				0C8715482B63EF58005F2557 /* ChooseReasonView.swift in Sources */,
 				0C9756C12B13DC1300F2A236 /* Card.swift in Sources */,
 				0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */,
 				0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */,

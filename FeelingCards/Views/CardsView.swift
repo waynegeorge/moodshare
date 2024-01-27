@@ -14,13 +14,14 @@ struct CardsView: View {
     
     @State private var showingShareSheet = false
     @State private var showingSettingsSheet = false
+    @State private var path = NavigationPath()
     
     var body: some View {
-        NavigationView {
+        NavigationStack (path: $path) {
             List {
                 if let lastCard = cards.last {
                     NavigationLink {
-                        EditCardView(card: lastCard)
+                        ChooseWordsView(card: lastCard)
                     } label: {
                         CardView(card: lastCard)
                     }
@@ -36,7 +37,8 @@ struct CardsView: View {
                         .opacity(0.5)
                 }
             }
-            .navigationTitle("Feelings Share")
+            //.navigationTitle("Mood Mapping")
+            .navigationTitle("Map My Mood")
             .toolbar {
                 Button("Settings", systemImage: "gear"){
                     showingSettingsSheet = true

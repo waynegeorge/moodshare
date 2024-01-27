@@ -14,8 +14,14 @@ struct ChooseWordsView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Select words")
-                .bold()
+            
+            HStack {
+                Text("Select words")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .bold()
+                
+            }
+            
             FlowLayout(alignment: .leading, spacing: 10) {
                 ForEach(CardDetails.words, id: \.self) { word in
                     ZStack {
@@ -39,17 +45,51 @@ struct ChooseWordsView: View {
                                 
                             }
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
                     }
-                    
-                    
                 }
             }
+            HStack {
+                Button("Choose all") {
+                    selection = Set(CardDetails.words)
+                    card.words = CardDetails.words
+                }
+                .padding(.leading)
+                
+                Spacer()
+                
+                Button("Clear") {
+                    selection = Set<String>()
+                    card.words = Array(selection)
+                }
+                .padding(.trailing)
+            }
+            .padding(.top, 40)
         }
         .padding()
         .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
         .foregroundColor(.black)
         .cornerRadius(20.2)
+        .onAppear() {
+            selection = Set(card.words)
+        }
+        
+        Button("Next") {
+            // next view
+        }
+        .font(.headline)
+        .foregroundColor(.white)
+        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.blue)
+        )
+        .padding(.top, 40)
+        
+        Button("Skip") {
+            // back to home view
+        }
+        .padding(.top, 10)
+        Spacer()
     }
 }
 

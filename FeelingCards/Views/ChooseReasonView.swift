@@ -12,36 +12,37 @@ struct ChooseReasonView: View {
     @Bindable var card : Card
     
     var body: some View {
-        VStack {
-            Text("Reason for your score:")
-                .bold()
-            TextEditor(text: $card.toShare)
-                .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+        NavigationStack {
+            VStack {
+                Text("Reason for your score:")
+                    .bold()
+                
+                TextField("Type here...", text: $card.toShare)
+            }
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+            .foregroundColor(.black)
+            .cornerRadius(20.2)
+            
+            NavigationLink("Next") {
+                ChooseWordsView(card: card)
+            }
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.blue)
+            )
+            .padding(.top, 20)
+            
+            NavigationLink("Skip") {
+                CardsView()
+            }
+            .padding(.top, 10)
+            
+            Spacer()
         }
-        .padding()
-        .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
-        .foregroundColor(.black)
-        .cornerRadius(20.2)
-        
-        
-        Button("Next") {
-            // next view
-        }
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.blue)
-        )
-        .padding(.top, 40)
-        
-        Button("Skip") {
-            // back to home view
-        }
-        .padding(.top, 10)
-        
-        Spacer()
     }
 }
 

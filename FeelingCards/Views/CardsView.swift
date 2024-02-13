@@ -12,7 +12,6 @@ struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
-    @State private var showingShareSheet = false
     @State private var showingSettingsSheet = false
     @State private var path = NavigationPath()
     
@@ -20,12 +19,10 @@ struct CardsView: View {
         NavigationStack (path: $path) {
             List {
                 if let lastCard = cards.last {
-                    NavigationLink {
-                        ChooseWordsView(card: lastCard)
-                    } label: {
+                    
+                    NavigationLink(value: lastCard) {
                         CardView(card: lastCard)
                     }
-                    .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: lastCard.score), CardColours.color(for: lastCard.score - 1)]), startPoint: .leading, endPoint: .trailing))
                 }
                 
                 ForEach(cards.dropLast().reversed()) { card in
@@ -37,14 +34,15 @@ struct CardsView: View {
                         .opacity(0.5)
                 }
             }
-            //.navigationTitle("Mood Mapping")
-            .navigationTitle("Map My Mood")
+            .navigationTitle("Mood Mapping")
+            .navigationDestination(for: Card.self) { card in
+                ChooseScoreView(card: card)
+            }
+            
+            //.navigationTitle("Map My Mood")
             .toolbar {
                 Button("Settings", systemImage: "gear"){
                     showingSettingsSheet = true
-                }
-                Button("Share todays's score", systemImage: "square.and.arrow.up"){
-                    showingShareSheet = true
                 }
             }
             .onAppear {
@@ -52,12 +50,6 @@ struct CardsView: View {
                     checkForNewCard()
                 }
                 
-            }
-            .sheet(isPresented: $showingShareSheet) {
-                if let lastCard = cards.last {
-                    //ShareView(itemsToShare: [lastCard.score])
-                    ShareView(itemsToShare: ["Today I feel like a \(lastCard.score) \(CardDetails.emojiScale[lastCard.score - 1])."])
-                }
             }
             .sheet(isPresented: $showingSettingsSheet) {
                 SettingsView()

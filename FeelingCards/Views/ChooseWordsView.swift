@@ -11,85 +11,94 @@ import SwiftUI
 struct ChooseWordsView: View {
     @Bindable var card : Card
     @State private var selection = Set<String>()
+    @State private var showingShareSheet = false
     
     var body: some View {
-        VStack(alignment: .center) {
-            
-            HStack {
-                Text("Select words")
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .bold()
+        NavigationStack {
+            VStack(alignment: .center) {
                 
-            }
-            
-            FlowLayout(alignment: .leading, spacing: 10) {
-                ForEach(CardDetails.words, id: \.self) { word in
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 1)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(selection.contains(word) ? Color(red: 0.678, green: 1, blue: 1) : Color.clear))
-                        
-                        Text(word)
-                            .padding(5)
-                            .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-                            .onTapGesture {
-                                if selection.contains(word) {
-                                    selection.remove(word)
-                                } else {
-                                    selection.insert(word)
+                HStack {
+                    Text("Select words")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .bold()
+                    
+                }
+                
+                FlowLayout(alignment: .leading, spacing: 10) {
+                    ForEach(CardDetails.words, id: \.self) { word in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 1)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(selection.contains(word) ? Color(red: 0.678, green: 1, blue: 1) : Color.clear))
+                            
+                            Text(word)
+                                .padding(5)
+                                .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                                .onTapGesture {
+                                    if selection.contains(word) {
+                                        selection.remove(word)
+                                    } else {
+                                        selection.insert(word)
+                                    }
+                                    card.words = Array(selection)
+                                    
+                                    
                                 }
-                                card.words = Array(selection)
-                                
-                                
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
                     }
                 }
-            }
-            HStack {
-                Button("Choose all") {
-                    selection = Set(CardDetails.words)
-                    card.words = CardDetails.words
+                HStack {
+                    Button("Choose all") {
+                        selection = Set(CardDetails.words)
+                        card.words = CardDetails.words
+                    }
+                    .padding(.leading)
+                    
+                    Spacer()
+                    
+                    Button("Clear") {
+                        selection = Set<String>()
+                        card.words = Array(selection)
+                    }
+                    .padding(.trailing)
                 }
-                .padding(.leading)
-                
-                Spacer()
-                
-                Button("Clear") {
-                    selection = Set<String>()
-                    card.words = Array(selection)
-                }
-                .padding(.trailing)
+                .padding(.top, 40)
             }
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+            .foregroundColor(.black)
+            .cornerRadius(20.2)
+            .onAppear() {
+                selection = Set(card.words)
+            }
+            
+            Button("Share") {
+                showingShareSheet = true
+            }
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.blue)
+            )
             .padding(.top, 40)
+            
+            NavigationLink("Done") {
+                CardsView()
+            }
+            .padding(.top, 10)
+            
+            Spacer()
         }
-        .padding()
-        .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
-        .foregroundColor(.black)
-        .cornerRadius(20.2)
-        .onAppear() {
-            selection = Set(card.words)
+        .sheet(isPresented: $showingShareSheet) {
+            ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).",
+                                     "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words)."])
+            
         }
-        
-        Button("Next") {
-            // next view
-        }
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.blue)
-        )
-        .padding(.top, 40)
-        
-        Button("Skip") {
-            // back to home view
-        }
-        .padding(.top, 10)
-        Spacer()
     }
 }
 

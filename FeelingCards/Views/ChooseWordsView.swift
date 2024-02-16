@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct ChooseWordsView: View {
+    @Binding var navigationPath: NavigationPath
     @Bindable var card : Card
     @State private var selection = Set<String>()
     
@@ -74,7 +75,7 @@ struct ChooseWordsView: View {
         }
         
         Button("Next") {
-            // next view
+            navigationPath.append(ViewDestination.chooseReason)
         }
         .font(.headline)
         .foregroundColor(.white)
@@ -85,8 +86,8 @@ struct ChooseWordsView: View {
         )
         .padding(.top, 40)
         
-        Button("Skip") {
-            // back to home view
+        Button("Done") {
+            navigationPath = NavigationPath()
         }
         .padding(.top, 10)
         Spacer()
@@ -100,7 +101,7 @@ struct ChooseWordsView: View {
         let words = CardDetails.words
         let example1 = Card(score: 0)
         let example2 = Card(score: 8, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return ChooseWordsView(card: example2)
+        return ChooseWordsView(navigationPath: .constant(NavigationPath()), card: example2)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

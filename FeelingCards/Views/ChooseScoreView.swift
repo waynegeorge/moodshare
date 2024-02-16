@@ -9,7 +9,10 @@ import SwiftData
 import SwiftUI
 
 struct ChooseScoreView: View {
+    @Binding var navigationPath: NavigationPath
     @Bindable var card : Card
+    
+    @Environment(\.dismiss) var dismiss
     let numbers = Array(1...10)
     
     var body: some View {
@@ -40,9 +43,19 @@ struct ChooseScoreView: View {
         .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(9)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    navigationPath.removeLast()
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+            }
+        }
         
         Button("Next") {
-            // next view
+            navigationPath.append(ViewDestination.chooseWords)
         }
         .font(.headline)
         .foregroundColor(.white)
@@ -53,8 +66,8 @@ struct ChooseScoreView: View {
         )
         .padding(.top, 40)
         
-        Button("Skip") {
-            // back to home view
+        Button("Done") {
+            navigationPath = NavigationPath()
         }
         .padding(.top, 10)
         
@@ -69,7 +82,7 @@ struct ChooseScoreView: View {
         let words = CardDetails.words
         let example1 = Card(score: 8)
         let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return ChooseScoreView(card: example1)
+        return ChooseScoreView(navigationPath: .constant(NavigationPath()), card: example1)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

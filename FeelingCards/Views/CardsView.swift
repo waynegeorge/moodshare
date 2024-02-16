@@ -8,24 +8,29 @@
 import SwiftData
 import SwiftUI
 
+enum ViewDestination: Hashable {
+    case chooseScore
+    case chooseWords
+    case chooseReason
+}
+
 struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
     @State private var showingShareSheet = false
     @State private var showingSettingsSheet = false
-    @State private var path = NavigationPath()
+    @State private var navigationPath = NavigationPath()
     
     var body: some View {
-        NavigationStack (path: $path) {
+        NavigationStack(path: $navigationPath) {
             List {
                 if let lastCard = cards.last {
-                    NavigationLink {
-                        ChooseWordsView(card: lastCard)
-                    } label: {
-                        CardView(card: lastCard)
-                    }
-                    .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: lastCard.score), CardColours.color(for: lastCard.score - 1)]), startPoint: .leading, endPoint: .trailing))
+                    CardView(card: lastCard)
+                        .onTapGesture {
+                            navigationPath.append(ViewDestination.chooseScore)
+                        }
+                        .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: lastCard.score), CardColours.color(for: lastCard.score - 1)]), startPoint: .leading, endPoint: .trailing))
                 }
                 
                 ForEach(cards.dropLast().reversed()) { card in
@@ -37,33 +42,34 @@ struct CardsView: View {
                         .opacity(0.5)
                 }
             }
-            //.navigationTitle("Mood Mapping")
-            .navigationTitle("Map My Mood")
-            .toolbar {
-                Button("Settings", systemImage: "gear"){
-                    showingSettingsSheet = true
-                }
-                Button("Share todays's score", systemImage: "square.and.arrow.up"){
-                    showingShareSheet = true
+            .navigationDestination(for: ViewDestination.self) { destination in
+                switch destination {
+                case .chooseScore:
+                    ChooseScoreView(navigationPath: $navigationPath, card: cards.last ?? Card())
+                case .chooseWords:
+                    ChooseWordsView(navigationPath: $navigationPath, card: cards.last ?? Card())
+                case .chooseReason:
+                    ChooseReasonView(navigationPath: $navigationPath, card: cards.last ?? Card())
                 }
             }
             .onAppear {
                 Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                     checkForNewCard()
                 }
-                
             }
-            .sheet(isPresented: $showingShareSheet) {
-                if let lastCard = cards.last {
-                    //ShareView(itemsToShare: [lastCard.score])
-                    ShareView(itemsToShare: ["Today I feel like a \(lastCard.score) \(CardDetails.emojiScale[lastCard.score - 1])."])
+            .navigationTitle("Map My Mood")
+            .toolbar {
+                Button(action: { showingSettingsSheet = true }) {
+                    Label("Settings", systemImage: "gear")
                 }
             }
+            .sheet(isPresented: $showingShareSheet) {
+                // Adjust ShareView initialization as per your actual implementation
+            }
             .sheet(isPresented: $showingSettingsSheet) {
-                SettingsView()
+                SettingsView() // Adjust as per your actual implementation
             }
         }
-        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
         .environment(\.modelContext, modelContext)
         .preferredColorScheme(.dark)
     }

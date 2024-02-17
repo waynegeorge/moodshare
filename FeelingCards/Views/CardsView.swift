@@ -18,7 +18,6 @@ struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
-    @State private var showingShareSheet = false
     @State private var showingSettingsSheet = false
     @State private var navigationPath = NavigationPath()
     
@@ -43,28 +42,28 @@ struct CardsView: View {
                 }
             }
             .navigationDestination(for: ViewDestination.self) { destination in
-                switch destination {
-                case .chooseScore:
-                    ChooseScoreView(navigationPath: $navigationPath, card: cards.last ?? Card())
-                case .chooseWords:
-                    ChooseWordsView(navigationPath: $navigationPath, card: cards.last ?? Card())
-                case .chooseReason:
-                    ChooseReasonView(navigationPath: $navigationPath, card: cards.last ?? Card())
+                if let lastCard = cards.last
+                {
+                    switch destination {
+                    case .chooseScore:
+                        ChooseScoreView(navigationPath: $navigationPath, card: lastCard)
+                    case .chooseWords:
+                        ChooseWordsView(navigationPath: $navigationPath, card: lastCard)
+                    case .chooseReason:
+                        ChooseReasonView(navigationPath: $navigationPath, card: lastCard)
+                    }
                 }
             }
             .onAppear {
-                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                    checkForNewCard()
-                }
+                checkForNewCard()
             }
             .navigationTitle("Map My Mood")
             .toolbar {
-                Button(action: { showingSettingsSheet = true }) {
-                    Label("Settings", systemImage: "gear")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { showingSettingsSheet = true }) {
+                        Label("Settings", systemImage: "gear")
+                    }
                 }
-            }
-            .sheet(isPresented: $showingShareSheet) {
-                // Adjust ShareView initialization as per your actual implementation
             }
             .sheet(isPresented: $showingSettingsSheet) {
                 SettingsView() // Adjust as per your actual implementation
@@ -72,10 +71,6 @@ struct CardsView: View {
         }
         .environment(\.modelContext, modelContext)
         .preferredColorScheme(.dark)
-    }
-    
-    func share() {
-        // Your share logic
     }
     
     func checkForNewCard() {

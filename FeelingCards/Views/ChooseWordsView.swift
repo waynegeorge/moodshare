@@ -70,6 +70,16 @@ struct ChooseWordsView: View {
         .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
         .foregroundColor(.black)
         .cornerRadius(20.2)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    navigationPath.removeLast()
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+            }            
+        }
         .onAppear() {
             selection = Set(card.words)
         }
@@ -86,10 +96,6 @@ struct ChooseWordsView: View {
         )
         .padding(.top, 40)
         
-        Button("Done") {
-            navigationPath = NavigationPath()
-        }
-        .padding(.top, 10)
         Spacer()
     }
 }

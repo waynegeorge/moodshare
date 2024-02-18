@@ -18,15 +18,31 @@ struct ChooseReasonView: View {
             Text("Reason for your score:")
                 .bold()
             TextEditor(text: $card.toShare)
+                .overlay(
+                    Group {
+                        if card.toShare.isEmpty {
+                            Text("Enter text here...")
+                                .foregroundColor(.gray)
+                                .padding(.leading, 4)
+                                .padding(.top, 8)
+                        }
+                    }, alignment: .topLeading
+                )
                 .scrollContentBackground(.hidden)
-                .frame(height: 200)
-                .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+                .background(CardGradients.gradient(for: card.score))
+            
+            Spacer()
+        }
+        .frame(width: 324, height: 420)
+        .onTapGesture {
+            // Dismiss the keyboard
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .sheet(isPresented: $showingShareSheet) {
             ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).", "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words.joined(separator: ", "))."])
         }
         .padding()
-        .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+        .background(CardGradients.gradient(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(20.2)
         .navigationBarBackButtonHidden()
@@ -38,14 +54,9 @@ struct ChooseReasonView: View {
                     Image(systemName: "chevron.left")
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Done") {
-                    navigationPath = NavigationPath()
-                }
-            }
         }
         
-        Button("Share") {
+        Button("Share", systemImage: "square.and.arrow.up") {
             showingShareSheet = true
         }
         .font(.headline)
@@ -56,7 +67,11 @@ struct ChooseReasonView: View {
                 .fill(Color.blue)
         )
         .padding(.top, 40)
-                
+        
+        Button("maybe later") {
+            navigationPath = NavigationPath()
+        }
+        .padding(.top, 20)
         Spacer()
     }
     

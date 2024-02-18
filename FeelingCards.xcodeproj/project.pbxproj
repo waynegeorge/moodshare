@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C5467D32B80FDA60004AE45 /* CardGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5467D22B80FDA60004AE45 /* CardGradients.swift */; };
 		0C8715422B62F18F005F2557 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715412B62F18F005F2557 /* WordItem.swift */; };
 		0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */; };
 		0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715452B62F3FA005F2557 /* FlowLayout.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C5467D22B80FDA60004AE45 /* CardGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGradients.swift; sourceTree = "<group>"; };
 		0C8715412B62F18F005F2557 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItem.swift; sourceTree = "<group>"; };
 		0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordsView.swift; sourceTree = "<group>"; };
 		0C8715452B62F3FA005F2557 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				0C9756D42B1401F600F2A236 /* SampleCards.swift */,
 				0CDD45982B4F2E1700643716 /* Previewer.swift */,
 				0C8715412B62F18F005F2557 /* WordItem.swift */,
+				0C5467D22B80FDA60004AE45 /* CardGradients.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */,
 				0C8715482B63EF58005F2557 /* ChooseReasonView.swift in Sources */,
 				0C9756C12B13DC1300F2A236 /* Card.swift in Sources */,
+				0C5467D32B80FDA60004AE45 /* CardGradients.swift in Sources */,
 				0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */,
 				0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */,
 				0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */,

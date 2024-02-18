@@ -18,7 +18,6 @@ struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
     
-    @State private var showingSettingsSheet = false
     @State private var navigationPath = NavigationPath()
     
     var body: some View {
@@ -29,13 +28,13 @@ struct CardsView: View {
                         .onTapGesture {
                             navigationPath.append(ViewDestination.chooseScore)
                         }
-                        .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: lastCard.score), CardColours.color(for: lastCard.score - 1)]), startPoint: .leading, endPoint: .trailing))
+                        .listRowBackground(CardGradients.gradient(for: lastCard.score))
                 }
                 
                 ForEach(cards.dropLast().reversed()) { card in
                     CardView(card: card)
                         .listRowSpacing(20)
-                        .listRowBackground(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+                        .listRowBackground(CardGradients.gradient(for: card.score))
                         .padding(.vertical, 5)
                         .cornerRadius(9)
                         .opacity(0.5)
@@ -58,16 +57,6 @@ struct CardsView: View {
                 checkForNewCard()
             }
             .navigationTitle("Map My Mood")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: { showingSettingsSheet = true }) {
-                        Label("Settings", systemImage: "gear")
-                    }
-                }
-            }
-            .sheet(isPresented: $showingSettingsSheet) {
-                SettingsView() // Adjust as per your actual implementation
-            }
         }
         .environment(\.modelContext, modelContext)
         .preferredColorScheme(.dark)

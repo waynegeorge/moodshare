@@ -19,7 +19,23 @@ struct AveragesView: View {
 
     var body: some View {
         VStack {
-            // Custom Tab Bar
+            Spacer()
+            
+            Text("Average: \(averageScore, specifier: "%.1f")")
+                .font(.title)
+                .foregroundColor(.primary)
+
+            Spacer()
+            // Conditional View Rendering
+            if selectedAverageTab == "Week" {
+                WeekGraphView(scores: Array(scores.suffix(7)))
+            } else if selectedAverageTab == "Month" {
+                MonthGraphView(scores: Array(scores.suffix(31))) // Modify as needed
+            } else if selectedAverageTab == "Year" {
+                YearGraphView(scores: Array(scores.suffix(12))) // Modify as needed
+            }
+            Spacer()
+            
             HStack {
                 Button("Week") {
                     selectedAverageTab = "Week"
@@ -44,22 +60,6 @@ struct AveragesView: View {
             }
             .padding()
             
-            Spacer()
-            
-            // Display the average score
-            Text("Average: \(averageScore, specifier: "%.1f")")
-                .font(.title)
-                .foregroundColor(.primary)
-
-            Spacer()
-            // Conditional View Rendering
-            if selectedAverageTab == "Week" {
-                WeekGraphView(scores: Array(scores.suffix(7)))
-            } else if selectedAverageTab == "Month" {
-                MonthGraphView(scores: Array(scores.suffix(31))) // Modify as needed
-            } else if selectedAverageTab == "Year" {
-                YearGraphView(scores: Array(scores.suffix(12))) // Modify as needed
-            }
             Spacer()
         }
     }

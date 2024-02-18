@@ -59,7 +59,7 @@ struct CardView: View {
             }
         }
         .padding()
-        .background(LinearGradient(gradient: Gradient(colors: [CardColours.color(for: card.score), CardColours.color(for: card.score - 1)]), startPoint: .leading, endPoint: .trailing))
+        .background(CardGradients.gradient(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(20.2)
     }

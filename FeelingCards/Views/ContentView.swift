@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab = 1
+    @State private var selectedTab = 0
     
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
+                CardsView()
+                    .tabItem {
+                        Label("Home", systemImage: "house.fill")
+                    }
+                    .tag(0)
                 
                 AveragesView()
                     .tabItem {
                         Label("Averages", systemImage: "chart.bar.fill")
-                    }
-                    .tag(2)
-                
-                CardsView()
-                    .tabItem {
-                        Label("Home", systemImage: "house.fill")
                     }
                     .tag(1)
                 
@@ -30,13 +29,15 @@ struct ContentView: View {
                     .tabItem {
                         Label("History", systemImage: "clock.arrow.circlepath")
                     }
-                    .tag(0)
+                    .tag(2)
+                
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+                    .tag(3)
             }
         }
         .navigationTitle("Hello")
     }
-}
-
-#Preview {
-    ContentView()
 }

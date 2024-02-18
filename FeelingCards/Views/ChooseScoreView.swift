@@ -34,18 +34,16 @@ struct ChooseScoreView: View {
                 }
             }
             .pickerStyle(WheelPickerStyle())
-            .frame(width: 300, height: 150) // Set the frame size of the Picker
-
             
-//
         }
+        .frame(width: 324, height: 420)
         .onAppear {
                 if card.score < 1 || card.score > 10 {
                     card.score = 5
                 }
             }
         .padding()
-        .background(CardColours.color(for: card.score))
+        .background(CardGradients.gradient(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(9)
         .navigationBarBackButtonHidden()
@@ -80,7 +78,7 @@ struct ChooseScoreView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Card.self, configurations: config)
         let words = CardDetails.words
-        let example1 = Card(score: 0)
+        let example1 = Card(score: 1)
         let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
         return ChooseScoreView(navigationPath: .constant(NavigationPath()), card: example1)
             .modelContainer(container)

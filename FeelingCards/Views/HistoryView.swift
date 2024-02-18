@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct HistoryView: View {
+    @State private var date = Date()
+    
     var body: some View {
-        Text("HistoryView")
+        NavigationStack {
+            VStack {
+                DatePicker(
+                    "Start Date",
+                    selection: $date,
+                    displayedComponents: [.date]
+                )
+                .datePickerStyle(.graphical)
+            }
+            .frame(width: 324, height: 420)
+            .padding()
+            .foregroundColor(.black)
+            .cornerRadius(9)
+            .navigationTitle("History")
+            
+            Spacer()
+        }
     }
 }
 

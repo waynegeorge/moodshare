@@ -30,15 +30,6 @@ struct CardsView: View {
                         }
                         .listRowBackground(CardGradients.gradient(for: lastCard.score))
                 }
-                
-                ForEach(cards.dropLast().reversed()) { card in
-                    CardView(card: card)
-                        .listRowSpacing(20)
-                        .listRowBackground(CardGradients.gradient(for: card.score))
-                        .padding(.vertical, 5)
-                        .cornerRadius(9)
-                        .opacity(0.5)
-                }
             }
             .navigationDestination(for: ViewDestination.self) { destination in
                 if let lastCard = cards.last

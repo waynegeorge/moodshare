@@ -28,9 +28,10 @@ struct CardsView: View {
                         .onTapGesture {
                             navigationPath.append(ViewDestination.chooseScore)
                         }
-                        .listRowBackground(CardGradients.gradient(for: lastCard.score))
+                        .background(backgroundForLastCard())
                 }
             }
+            .background(backgroundForLastCard())
             .navigationDestination(for: ViewDestination.self) { destination in
                 if let lastCard = cards.last
                 {
@@ -49,8 +50,16 @@ struct CardsView: View {
             }
             .navigationTitle("Map My Mood")
         }
+        .ignoresSafeArea()
         .environment(\.modelContext, modelContext)
         .preferredColorScheme(.dark)
+    }
+
+    private func backgroundForLastCard() -> some View {
+        let imageName = cards.last.map { "Group \($0.score)" } ?? "defaultBackground"
+        return Image(imageName)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
     }
     
     func checkForNewCard() {

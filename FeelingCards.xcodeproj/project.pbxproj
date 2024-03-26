@@ -29,6 +29,7 @@
 		0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */; };
 		0CCEB4BA2B5BFA890070FF1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */; };
 		0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45982B4F2E1700643716 /* Previewer.swift */; };
+		0CE6F4BD2BB35731001C4AB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE6F4BC2BB35731001C4AB3 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0CDD45982B4F2E1700643716 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		0CE6F4BB2BB07C48001C4AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0CE6F4BC2BB35731001C4AB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				0C9756C02B13DC1300F2A236 /* Card.swift */,
+				0CE6F4BC2BB35731001C4AB3 /* Theme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */,
 				0C8715422B62F18F005F2557 /* WordItem.swift in Sources */,
 				0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */,
+				0CE6F4BD2BB35731001C4AB3 /* Theme.swift in Sources */,
 				0C9756C52B13DC5100F2A236 /* CardsView.swift in Sources */,
 				0C9756CE2B13E9D000F2A236 /* CardDetails.swift in Sources */,
 				0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */,
@@ -375,7 +379,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeelingCards/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mood Share";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mood Daily";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = MoodShareLaunch.png;
@@ -407,7 +411,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeelingCards/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mood Share";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mood Daily";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = MoodShareLaunch.png;

@@ -17,12 +17,12 @@ enum ViewDestination: Hashable {
 struct CardsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var cards: [Card]
-    
     @State private var navigationPath = NavigationPath()
+    @State private var showingShareSheet = false
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            List {
+            Group {
                 if let lastCard = cards.last {
                     CardView(card: lastCard)
                         .onTapGesture {
@@ -30,8 +30,26 @@ struct CardsView: View {
                         }
                         .background(backgroundForLastCard())
                 }
+                if let lastCard = cards.last
+                {
+                    if lastCard.score != 0 {
+                        Button("Share", systemImage: "square.and.arrow.up") {
+                            showingShareSheet = true
+                        }
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.blue)
+                        )
+                        .padding(.top, 40)
+                    }
+                }
+                Spacer()
+                
+                Spacer()
             }
-            .background(backgroundForLastCard())
             .navigationDestination(for: ViewDestination.self) { destination in
                 if let lastCard = cards.last
                 {
@@ -48,7 +66,10 @@ struct CardsView: View {
             .onAppear {
                 checkForNewCard()
             }
-            .navigationTitle("Map My Mood")
+            .sheet(isPresented: $showingShareSheet) {
+                ShareView(itemsToShare: ["Today I feel like a \(String(describing: cards.last?.score)) \(CardDetails.emojiScale[(cards.last?.score ?? 0) - 1]).", "I feel this way because \(String(describing: cards.last?.toShare)).", "Words I've chosen to describe how I feel are \(String(describing: cards.last?.words.joined(separator: ", ")))."])
+            }
+            .navigationTitle("Mood Daily")
         }
         .ignoresSafeArea()
         .environment(\.modelContext, modelContext)

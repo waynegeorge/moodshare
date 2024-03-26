@@ -13,29 +13,34 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                CardsView()
-                    .tabItem {
-                        Label("Home", systemImage: "house.fill")
-                    }
-                    .tag(0)
-                
-                AveragesView()
-                    .tabItem {
-                        Label("Averages", systemImage: "chart.bar.fill")
-                    }
-                    .tag(1)
-                
-                HistoryView()
-                    .tabItem {
-                        Label("History", systemImage: "clock.arrow.circlepath")
-                    }
-                    .tag(2)
-                
-                SettingsView()
-                    .tabItem {
-                        Label("Settings", systemImage: "gear")
-                    }
-                    .tag(3)
+                Group {
+                    CardsView()
+                        .tabItem {
+                            Label("Home", systemImage: "house.fill")
+                        }
+                        .tag(0)
+                    
+                    AveragesView()
+                        .tabItem {
+                            Label("Averages", systemImage: "chart.bar.fill")
+                        }
+                        .tag(1)
+                    
+                    HistoryView()
+                        .tabItem {
+                            Label("History", systemImage: "clock.arrow.circlepath")
+                        }
+                        .tag(2)
+                    
+                    SettingsView()
+                        .tabItem {
+                            Label("Settings", systemImage: "gear")
+                        }
+                        .tag(3)
+                }
+                .toolbarBackground(.black, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarColorScheme(.dark, for: .tabBar)
             }
         }
         .navigationTitle("Hello")

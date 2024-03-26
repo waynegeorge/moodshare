@@ -43,7 +43,7 @@ struct ChooseScoreView: View {
                 }
             }
         .padding()
-        .background(CardGradients.gradient(for: card.score))
+        .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(9)
         .navigationBarBackButtonHidden()
@@ -57,7 +57,7 @@ struct ChooseScoreView: View {
             }
         }
         
-        Button("Next") {
+        Button("Add more?") {
             navigationPath.append(ViewDestination.chooseWords)
         }
         .font(.headline)
@@ -68,6 +68,11 @@ struct ChooseScoreView: View {
                 .fill(Color.blue)
         )
         .padding(.top, 40)
+        
+        Button("Done") {
+            navigationPath = NavigationPath()
+        }
+        .padding(.top, 20)
         
         Spacer()
     }

@@ -29,7 +29,7 @@ struct ChooseReasonView: View {
                     }, alignment: .topLeading
                 )
                 .scrollContentBackground(.hidden)
-                .background(CardGradients.gradient(for: card.score))
+                .background(CardColours.color(for: card.score))
             
             Spacer()
         }
@@ -42,7 +42,7 @@ struct ChooseReasonView: View {
             ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).", "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words.joined(separator: ", "))."])
         }
         .padding()
-        .background(CardGradients.gradient(for: card.score))
+        .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(20.2)
         .navigationBarBackButtonHidden()
@@ -56,8 +56,8 @@ struct ChooseReasonView: View {
             }
         }
         
-        Button("Share", systemImage: "square.and.arrow.up") {
-            showingShareSheet = true
+        Button("Done") {
+            navigationPath = NavigationPath()
         }
         .font(.headline)
         .foregroundColor(.white)
@@ -68,14 +68,8 @@ struct ChooseReasonView: View {
         )
         .padding(.top, 40)
         
-        Button("maybe later") {
-            navigationPath = NavigationPath()
-        }
-        .padding(.top, 20)
         Spacer()
-    }
-    
-    
+    }    
 }
 
 #Preview {

@@ -68,7 +68,7 @@ struct ChooseWordsView: View {
         }
         .frame(width: 324, height: 420)
         .padding()
-        .background(CardGradients.gradient(for: card.score))
+        .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(20.2)
         .navigationBarBackButtonHidden()
@@ -85,7 +85,7 @@ struct ChooseWordsView: View {
             selection = Set(card.words)
         }
         
-        Button("Next") {
+        Button("More?") {
             navigationPath.append(ViewDestination.chooseReason)
         }
         .font(.headline)
@@ -96,6 +96,11 @@ struct ChooseWordsView: View {
                 .fill(Color.blue)
         )
         .padding(.top, 40)
+        
+        Button("Done") {
+            navigationPath = NavigationPath()
+        }
+        .padding(.top, 20)
         
         Spacer()
     }

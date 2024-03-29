@@ -18,16 +18,6 @@ struct ChooseReasonView: View {
             Text("Reason for your score:")
                 .bold()
             TextEditor(text: $card.toShare)
-                .overlay(
-                    Group {
-                        if card.toShare.isEmpty {
-                            Text("Enter text here...")
-                                .foregroundColor(.gray)
-                                .padding(.leading, 4)
-                                .padding(.top, 8)
-                        }
-                    }, alignment: .topLeading
-                )
                 .scrollContentBackground(.hidden)
                 .background(CardColours.color(for: card.score))
             
@@ -54,19 +44,15 @@ struct ChooseReasonView: View {
                     Image(systemName: "chevron.left")
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    navigationPath = NavigationPath()
+                } label: {
+                    Text("Done")
+                }
+            }
         }
-        
-        Button("Done") {
-            navigationPath = NavigationPath()
-        }
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.blue)
-        )
-        .padding(.top, 40)
         
         Spacer()
     }    

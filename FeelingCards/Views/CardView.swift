@@ -23,9 +23,11 @@ struct CardView: View {
             
             Group {
                 if card.score >= 1 && card.score <= 10 {
+                    Text(CardDetails.emojiScale[card.score - 1])
+                        .font(.system(size: 120))
                     Text(Calendar.current.isDateInToday(card.date) ?
-                         "Today your score is \(card.score) \(CardDetails.emojiScale[card.score - 1])" :
-                            "Your score was \(card.score) \(CardDetails.emojiScale[card.score - 1])")
+                         "Today your score is \(card.score)" :
+                            "Your score was \(card.score)")
                 } else if Calendar.current.isDateInToday(card.date) {
                     Text("Tap to give your score for today")
                 } else {
@@ -42,6 +44,7 @@ struct CardView: View {
                         .bold()
                     Text(card.toShare)
                 }
+                .frame(minWidth: 0, maxWidth: 300)
                 .padding(.horizontal, 10)
                 .padding(.vertical)
                 .foregroundColor(.black)
@@ -54,6 +57,7 @@ struct CardView: View {
                     Text(card.words.joined(separator: ", ") )
                         .italic()
                 }
+                .frame(minWidth: 0, maxWidth: 300)
                 .padding(.horizontal, 10)
                 .padding(.vertical)
             }
@@ -62,7 +66,7 @@ struct CardView: View {
         .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
         .cornerRadius(20.2)
-        .frame(width: 400, height: 500)
+        .frame(width: 400, height: 570)
     }
 }
 

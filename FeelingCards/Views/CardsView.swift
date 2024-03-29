@@ -43,7 +43,6 @@ struct CardsView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.blue)
                         )
-                        .padding(.top, 40)
                     }
                 }
                 Spacer()
@@ -69,7 +68,7 @@ struct CardsView: View {
             .sheet(isPresented: $showingShareSheet) {
                 ShareView(itemsToShare: ["Today I feel like a \(String(describing: cards.last?.score)) \(CardDetails.emojiScale[(cards.last?.score ?? 0) - 1]).", "I feel this way because \(String(describing: cards.last?.toShare)).", "Words I've chosen to describe how I feel are \(String(describing: cards.last?.words.joined(separator: ", ")))."])
             }
-            .navigationTitle("Mood Daily")
+            .navigationTitle("Mood Share")
         }
         .ignoresSafeArea()
         .environment(\.modelContext, modelContext)
@@ -81,6 +80,7 @@ struct CardsView: View {
         return Image(imageName)
             .resizable()
             .aspectRatio(contentMode: .fill)
+            .frame(minWidth: 0, maxWidth: .infinity)
     }
     
     func checkForNewCard() {

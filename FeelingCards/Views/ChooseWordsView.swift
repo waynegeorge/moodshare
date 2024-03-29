@@ -20,7 +20,6 @@ struct ChooseWordsView: View {
                 Text("Select words")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .bold()
-                
             }
             
             FlowLayout(alignment: .leading, spacing: 10) {
@@ -42,8 +41,6 @@ struct ChooseWordsView: View {
                                     selection.insert(word)
                                 }
                                 card.words = Array(selection)
-                                
-                                
                             }
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
@@ -79,13 +76,21 @@ struct ChooseWordsView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
-            }            
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    navigationPath = NavigationPath()
+                } label: {
+                    Text("Done")
+                }
+            }
         }
         .onAppear() {
             selection = Set(card.words)
         }
         
-        Button("More?") {
+        Button("Next") {
             navigationPath.append(ViewDestination.chooseReason)
         }
         .font(.headline)
@@ -95,12 +100,7 @@ struct ChooseWordsView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.blue)
         )
-        .padding(.top, 40)
-        
-        Button("Done") {
-            navigationPath = NavigationPath()
-        }
-        .padding(.top, 20)
+        .padding(.top, 30)
         
         Spacer()
     }

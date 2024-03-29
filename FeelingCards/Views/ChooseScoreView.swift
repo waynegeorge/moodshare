@@ -55,9 +55,17 @@ struct ChooseScoreView: View {
                     Image(systemName: "chevron.left")
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    navigationPath = NavigationPath()
+                } label: {
+                    Text("Done")
+                }
+            }
         }
         
-        Button("Add more?") {
+        Button("Next") {
             navigationPath.append(ViewDestination.chooseWords)
         }
         .font(.headline)
@@ -67,12 +75,7 @@ struct ChooseScoreView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.blue)
         )
-        .padding(.top, 40)
-        
-        Button("Done") {
-            navigationPath = NavigationPath()
-        }
-        .padding(.top, 20)
+        .padding(.top, 30)
         
         Spacer()
     }

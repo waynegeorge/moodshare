@@ -28,6 +28,10 @@ struct HistoryView: View {
             
             Spacer()
         }
+        
+        VStack {
+            Text("Hello")
+        }
     }
 }
 

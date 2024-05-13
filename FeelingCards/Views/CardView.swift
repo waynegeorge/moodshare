@@ -25,30 +25,22 @@ struct CardView: View {
                 if card.score >= 1 && card.score <= 10 {
                     Text(CardDetails.emojiScale[card.score - 1])
                         .font(.system(size: 120))
-                    Text(Calendar.current.isDateInToday(card.date) ?
-                         "Today your score is \(card.score)" :
-                            "Your score was \(card.score)")
+                    HStack {
+                        Text(Calendar.current.isDateInToday(card.date) ?
+                             "My mood today is:" :
+                                "My mood was:")
+                        Text("\(card.score)")
+                            .font(.title)
+                    }
                 } else if Calendar.current.isDateInToday(card.date) {
-                    Text("Tap to give your score for today")
+                    Text("Tap to give log mood for today")
                 } else {
-                    Text("No score given")
+                    Text("No mood logged")
                 }
             }
-            .padding()
+            .padding(.horizontal, 10)
             .font(.title2)
             .foregroundColor(.black)
-            
-            if (card.toShare != "") {
-                VStack {
-                    Text("Reason for your score:")
-                        .bold()
-                    Text(card.toShare)
-                }
-                .frame(minWidth: 0, maxWidth: 300)
-                .padding(.horizontal, 10)
-                .padding(.vertical)
-                .foregroundColor(.black)
-            }
             
             if (card.words.count != 0) {
                 VStack {
@@ -60,6 +52,18 @@ struct CardView: View {
                 .frame(minWidth: 0, maxWidth: 300)
                 .padding(.horizontal, 10)
                 .padding(.vertical)
+            }
+            
+            if (card.toShare != "") {
+                VStack {
+                    Text("Reason for my score:")
+                        .bold()
+                    Text(card.toShare)
+                }
+                .frame(minWidth: 0, maxWidth: 300)
+                .padding(.horizontal, 10)
+                .padding(.vertical)
+                .foregroundColor(.black)
             }
         }
         .padding()

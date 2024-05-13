@@ -11,6 +11,7 @@ import SwiftUI
 struct ChooseScoreView: View {
     @Binding var navigationPath: NavigationPath
     @Bindable var card : Card
+    @State private var score: Int = 5
     
     @Environment(\.dismiss) var dismiss
     let numbers = Array(1...10)
@@ -25,7 +26,7 @@ struct ChooseScoreView: View {
                     .border(Color.black, width: 2)
             }
             
-            Picker("How do you feel today?", selection: $card.score) {
+            Picker("How do you feel today?", selection: $score) {
                 ForEach(numbers, id: \.self) { number in
                     Text("\(number) \(CardDetails.emojiScale[number - 1])")
                         .foregroundColor(.black)  // Set text color to black
@@ -37,19 +38,22 @@ struct ChooseScoreView: View {
             
         }
         .frame(width: 324, height: 420)
+        
         .onAppear {
-                if card.score < 1 || card.score > 10 {
-                    card.score = 5
-                }
-            }
+            score = card.score == 0 ? 5 : card.score
+        }
+        .onDisappear {
+            
+        }
         .padding()
-        .background(CardColours.color(for: card.score))
+        .background(CardColours.color(for: score))
         .foregroundColor(.black)
         .cornerRadius(9)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
+                    card.score = score
                     navigationPath.removeLast()
                 } label: {
                     Image(systemName: "chevron.left")
@@ -58,6 +62,7 @@ struct ChooseScoreView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
+                    card.score = score
                     navigationPath = NavigationPath()
                 } label: {
                     Text("Done")
@@ -66,6 +71,7 @@ struct ChooseScoreView: View {
         }
         
         Button("Next") {
+            card.score = score
             navigationPath.append(ViewDestination.chooseWords)
         }
         .font(.headline)

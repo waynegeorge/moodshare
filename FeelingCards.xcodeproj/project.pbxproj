@@ -29,6 +29,7 @@
 		0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */; };
 		0CCEB4BA2B5BFA890070FF1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */; };
 		0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45982B4F2E1700643716 /* Previewer.swift */; };
+		0CDFF90C2BF2963400C02417 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDFF90B2BF2963400C02417 /* Launch Screen.storyboard */; };
 		0CE6F4BD2BB35731001C4AB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE6F4BC2BB35731001C4AB3 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0CDD45982B4F2E1700643716 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		0CDFF90B2BF2963400C02417 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0CE6F4BB2BB07C48001C4AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0CE6F4BC2BB35731001C4AB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE6F4BB2BB07C48001C4AB3 /* Info.plist */,
+				0CDFF90B2BF2963400C02417 /* Launch Screen.storyboard */,
 				0C9756CA2B13E62900F2A236 /* Utilities */,
 				0C9756BF2B13DC0900F2A236 /* Models */,
 				0C9756BE2B13DBDA00F2A236 /* Views */,
@@ -208,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDFF90C2BF2963400C02417 /* Launch Screen.storyboard in Resources */,
 				0C9756B82B13DBAD00F2A236 /* Preview Assets.xcassets in Resources */,
 				0C9756B52B13DBAD00F2A236 /* Assets.xcassets in Resources */,
 			);
@@ -371,7 +375,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelingCards/Preview Content\"";
@@ -383,7 +387,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = MoodShareLaunch.png;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,7 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelingCards/Preview Content\"";
@@ -416,7 +420,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = MoodShareLaunch.png;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

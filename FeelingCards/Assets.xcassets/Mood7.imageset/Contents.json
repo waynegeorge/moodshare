@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "MoodShareLaunch.png",
+      "filename" : "Mood7.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "MoodShareLaunch 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "MoodShareLaunch 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

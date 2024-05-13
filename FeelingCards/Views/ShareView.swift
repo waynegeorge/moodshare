@@ -5,7 +5,6 @@
 //  Created by Wayne George on 20/01/2024.
 //
 
-import SwiftData
 import SwiftUI
 
 struct ShareView: UIViewControllerRepresentable {

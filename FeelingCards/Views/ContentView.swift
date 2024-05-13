@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @State private var selectedTab = 0
+    @Query var cards: [Card]
     
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
                 Group {
-                    CardsView()
+                    CardsView(cards: cards)
                         .tabItem {
                             Label("Home", systemImage: "house.fill")
                         }

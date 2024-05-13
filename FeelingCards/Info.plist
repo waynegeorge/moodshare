@@ -5,9 +5,7 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>MoodShareLaunch.png</string>
-		<key>UILaunchScreen</key>
-		<dict/>
+		<string>MoodShareLaunch</string>
 	</dict>
 </dict>
 </plist>

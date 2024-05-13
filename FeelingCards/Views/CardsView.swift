@@ -6,6 +6,7 @@
 //
 
 import SwiftData
+import UIKit
 import SwiftUI
 
 enum ViewDestination: Hashable {
@@ -15,10 +16,12 @@ enum ViewDestination: Hashable {
 }
 
 struct CardsView: View {
+    @Bindable var cards: [Card]
     @Environment(\.modelContext) var modelContext
-    @Query var cards: [Card]
+    
     @State private var navigationPath = NavigationPath()
     @State private var showingShareSheet = false
+    @State private var shareItems: [Any] = []
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
@@ -34,7 +37,7 @@ struct CardsView: View {
                 {
                     if lastCard.score != 0 {
                         Button("Share", systemImage: "square.and.arrow.up") {
-                            showingShareSheet = true
+                            captureAndPrepareShare()
                         }
                         .font(.headline)
                         .foregroundColor(.white)
@@ -64,9 +67,10 @@ struct CardsView: View {
             }
             .onAppear {
                 checkForNewCard()
+                
             }
             .sheet(isPresented: $showingShareSheet) {
-                ShareView(itemsToShare: ["Today I feel like a \(String(describing: cards.last?.score)) \(CardDetails.emojiScale[(cards.last?.score ?? 0) - 1]).", "I feel this way because \(String(describing: cards.last?.toShare)).", "Words I've chosen to describe how I feel are \(String(describing: cards.last?.words.joined(separator: ", ")))."])
+                ShareView(itemsToShare: shareItems)
             }
             .navigationTitle("Mood Share")
         }
@@ -74,9 +78,9 @@ struct CardsView: View {
         .environment(\.modelContext, modelContext)
         .preferredColorScheme(.dark)
     }
-
+    
     private func backgroundForLastCard() -> some View {
-        let imageName = cards.last.map { "Group \($0.score)" } ?? "defaultBackground"
+        let imageName = cards.last.map { "Mood\($0.score)" } ?? "defaultBackground"
         return Image(imageName)
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -105,12 +109,62 @@ struct CardsView: View {
     }
     
     func isToday(date: Date) -> Bool {
-        print("Date in to isToday \(date)")
         let calendar = Calendar.current
         let todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
         let selectedDateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         
         return todayComponents == selectedDateComponents
+    }
+    
+    private func captureAndPrepareShare() {
+        if let windowScene = UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .compactMap({ $0 as? UIWindowScene })
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first {
+            
+            let screenshot = windowScene.rootViewController?.view.takeScreenshot()
+            
+            let scale = UIScreen.main.scale
+            let cropY = (screenshot?.size.height ?? 0) * 0.1
+            let cropHeight = (screenshot?.size.height ?? 0) * 0.75
+            let cropRect = CGRect(x: 0, y: cropY * scale, width: (screenshot?.size.width ?? 0) * scale, height: cropHeight * scale)
+            
+            if let croppedImage = screenshot?.cropped(to: cropRect),
+               let imageData = croppedImage.jpegData(compressionQuality: 0.8) {
+                shareItems = [imageData]
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    showingShareSheet = true
+                }
+
+                print("Image ready for sharing")
+            } else {
+                print("Failed to prepare image data")
+            }
+        } else {
+            print("No key window found")
+        }
+        
+        
+    }
+    
+}
+
+extension UIImage {
+    func cropped(to rect: CGRect) -> UIImage? {
+        guard let cgImage = self.cgImage?.cropping(to: rect) else { return nil }
+        return UIImage(cgImage: cgImage)
+    }
+}
+
+extension UIView {
+    func takeScreenshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+        if drawHierarchy(in: bounds, afterScreenUpdates: true) {
+            return UIGraphicsGetImageFromCurrentImageContext()
+        }
+        return nil
     }
 }
 

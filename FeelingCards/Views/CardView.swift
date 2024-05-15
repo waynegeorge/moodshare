@@ -17,7 +17,7 @@ struct CardView: View {
                 Text(DateUtility.formattedDate(card.date))
                     .foregroundColor(.black)
                     .bold()
-                    .frame(width: 200, height: 30)
+                    .frame(width: 230, height: 30)
                     .border(Color.black, width: 2)
             }
             
@@ -33,7 +33,7 @@ struct CardView: View {
                             .font(.title)
                     }
                 } else if Calendar.current.isDateInToday(card.date) {
-                    Text("Tap to give log mood for today")
+                    Text("Tap to log mood for today")
                 } else {
                     Text("No mood logged")
                 }

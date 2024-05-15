@@ -16,7 +16,7 @@ enum ViewDestination: Hashable {
 }
 
 struct CardsView: View {
-    @Bindable var cards: [Card]
+    @Query var cards: [Card]
     @Environment(\.modelContext) var modelContext
     
     @State private var navigationPath = NavigationPath()

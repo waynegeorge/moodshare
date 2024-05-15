@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Charts
+import SwiftData
 
 struct AveragesView: View {
+    @Query var cards: [Card]
     @State private var selectedAverageTab: String = "Week"
+    @State private var selectedSegment = 0
 
     let scores = DataGenerator.scores
 
@@ -36,6 +39,14 @@ struct AveragesView: View {
                 YearGraphView(scores: Array(scores.suffix(12))) // Modify as needed
             }
             Spacer()
+            
+            Picker("Chart View", selection: $selectedAverageTab) {
+                Text("Week").tag("Week")
+                Text("Month").tag("Month")
+                Text("Year").tag("Year")
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
             
             HStack {
                 Button("Week") {

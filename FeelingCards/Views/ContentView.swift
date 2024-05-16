@@ -20,9 +20,9 @@ struct ContentView: View {
                         }
                         .tag(0)
                     
-                    AveragesView()
+                    AnalyticsView()
                         .tabItem {
-                            Label("Averages", systemImage: "chart.bar.fill")
+                            Label("Analytics", systemImage: "chart.bar.fill")
                         }
                         .tag(1)
                     
@@ -32,11 +32,11 @@ struct ContentView: View {
                         }
                         .tag(2)
                     
-                    SettingsView()
-                        .tabItem {
-                            Label("Settings", systemImage: "gear")
-                        }
-                        .tag(3)
+//                    SettingsView()
+//                        .tabItem {
+//                            Label("Settings", systemImage: "gear")
+//                        }
+//                        .tag(3)
                 }
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)

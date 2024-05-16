@@ -17,7 +17,7 @@
 		0C9756B52B13DBAD00F2A236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9756B42B13DBAD00F2A236 /* Assets.xcassets */; };
 		0C9756B82B13DBAD00F2A236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9756B72B13DBAD00F2A236 /* Preview Assets.xcassets */; };
 		0C9756C12B13DC1300F2A236 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C02B13DC1300F2A236 /* Card.swift */; };
-		0C9756C32B13DC4800F2A236 /* AveragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C22B13DC4800F2A236 /* AveragesView.swift */; };
+		0C9756C32B13DC4800F2A236 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C22B13DC4800F2A236 /* AnalyticsView.swift */; };
 		0C9756C52B13DC5100F2A236 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C42B13DC5100F2A236 /* CardsView.swift */; };
 		0C9756C72B13DC5600F2A236 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C62B13DC5600F2A236 /* CardView.swift */; };
 		0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756C82B13DC5900F2A236 /* HistoryView.swift */; };
@@ -45,7 +45,7 @@
 		0C9756B42B13DBAD00F2A236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C9756B72B13DBAD00F2A236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C9756C02B13DC1300F2A236 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		0C9756C22B13DC4800F2A236 /* AveragesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AveragesView.swift; sourceTree = "<group>"; };
+		0C9756C22B13DC4800F2A236 /* AnalyticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		0C9756C42B13DC5100F2A236 /* CardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		0C9756C62B13DC5600F2A236 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0C9756C82B13DC5900F2A236 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		0C9756BE2B13DBDA00F2A236 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0C9756C22B13DC4800F2A236 /* AveragesView.swift */,
+				0C9756C22B13DC4800F2A236 /* AnalyticsView.swift */,
 				0C9756C42B13DC5100F2A236 /* CardsView.swift */,
 				0C9756C62B13DC5600F2A236 /* CardView.swift */,
 				0C9756B22B13DBAB00F2A236 /* ContentView.swift */,
@@ -242,7 +242,7 @@
 				0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */,
 				0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */,
 				0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */,
-				0C9756C32B13DC4800F2A236 /* AveragesView.swift in Sources */,
+				0C9756C32B13DC4800F2A236 /* AnalyticsView.swift in Sources */,
 				0C9756C72B13DC5600F2A236 /* CardView.swift in Sources */,
 				0C9756B12B13DBAB00F2A236 /* FeelingCardsApp.swift in Sources */,
 			);

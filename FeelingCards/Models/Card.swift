@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-class Card {
+class Card: Identifiable {
     var date: Date
     var complete: Bool
     var score: Int

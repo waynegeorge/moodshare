@@ -15,6 +15,9 @@ struct HistoryView: View {
     @State var showingCard = false
     @State var currentCard = Card()
     
+    //TODO remove
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -78,6 +81,11 @@ struct HistoryView: View {
             }
             .onTapGesture {
                 showingCard.toggle()
+            }
+            
+            Button("Add card") {
+                let newCard = Card(date: date, score: Int.random(in: 1...10))
+                modelContext.insert(newCard)
             }
             
             Spacer()

@@ -12,6 +12,7 @@ struct ChooseScoreView: View {
     @Binding var navigationPath: NavigationPath
     @Bindable var card : Card
     @State private var score: Int = 5
+    @EnvironmentObject var moodLogManager: MoodLogManager
     
     @Environment(\.dismiss) var dismiss
     let numbers = Array(1...10)
@@ -41,6 +42,7 @@ struct ChooseScoreView: View {
         
         .onAppear {
             score = card.score == 0 ? 5 : card.score
+            print(moodLogManager.hasLoggedMood)
         }
         .onDisappear {
             
@@ -55,6 +57,7 @@ struct ChooseScoreView: View {
                 Button {
                     card.score = score
                     navigationPath.removeLast()
+                    moodLogManager.markMoodAsLogged()
                 } label: {
                     Image(systemName: "chevron.left")
                 }
@@ -64,6 +67,7 @@ struct ChooseScoreView: View {
                 Button {
                     card.score = score
                     navigationPath = NavigationPath()
+                    moodLogManager.markMoodAsLogged()
                 } label: {
                     Text("Done")
                 }
@@ -72,7 +76,8 @@ struct ChooseScoreView: View {
         
         Button {
             card.score = score
-            navigationPath.append(ViewDestination.chooseWords)
+            navigationPath.append(ViewDestination.chooseWords)            
+            moodLogManager.markMoodAsLogged()
         } label: {
             Text("Next")
                 .font(.headline)

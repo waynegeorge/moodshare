@@ -28,7 +28,7 @@ struct ContentView: View {
                     
                     HistoryView()
                         .tabItem {
-                            Label("History", systemImage: "clock.arrow.circlepath")
+                            Label("Archive", systemImage: "clock.arrow.circlepath")
                         }
                         .tag(2)
                     

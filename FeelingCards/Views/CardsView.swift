@@ -36,16 +36,17 @@ struct CardsView: View {
                 if let lastCard = cards.last
                 {
                     if lastCard.score != 0 {
-                        Button("Share", systemImage: "square.and.arrow.up") {
+                        Button {
                             captureAndPrepareShare()
+                        } label: {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.blue)
+                            )
                         }
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.blue)
-                        )
                     }
                 }
                 Spacer()
@@ -127,7 +128,7 @@ struct CardsView: View {
             
             let scale = UIScreen.main.scale
             let cropY = (screenshot?.size.height ?? 0) * 0.1
-            let cropHeight = (screenshot?.size.height ?? 0) * 0.75
+            let cropHeight = (screenshot?.size.height ?? 0) * 0.74
             let cropRect = CGRect(x: 0, y: cropY * scale, width: (screenshot?.size.width ?? 0) * scale, height: cropHeight * scale)
             
             if let croppedImage = screenshot?.cropped(to: cropRect),

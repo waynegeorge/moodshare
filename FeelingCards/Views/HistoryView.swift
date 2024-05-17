@@ -15,6 +15,15 @@ struct HistoryView: View {
     @State var showingCard = false
     @State var currentCard = Card()
     
+    let dateRange: ClosedRange<Date> = {
+        let calendar = Calendar.current
+        let startComponents = DateComponents(year: 2024, month: 1, day: 1)
+        let endComponents = DateComponents(year: 2049, month: 12, day: 31, hour: 23, minute: 59, second: 59)
+        return calendar.date(from:startComponents)!
+            ...
+            calendar.date(from:endComponents)!
+    }()
+    
     //TODO remove
     @Environment(\.modelContext) var modelContext
     
@@ -24,6 +33,7 @@ struct HistoryView: View {
                 DatePicker(
                     "Start Date",
                     selection: $date,
+                    in: dateRange,
                     displayedComponents: [.date]
                 )
                 .datePickerStyle(.graphical)
@@ -32,7 +42,7 @@ struct HistoryView: View {
             .frame(width: 324)
             .foregroundColor(.black)
             .cornerRadius(9)
-            .navigationTitle("History")
+            .navigationTitle("Archive")
             
             VStack {
                 if let selectedCard = cards.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
@@ -46,9 +56,15 @@ struct HistoryView: View {
                             Text("\(selectedCard.score)")
                                 .font(.title)
                         }
+                        if (selectedCard.words.count != 0 || selectedCard.toShare != "") {
+                            Text("Tap for more")
+                        }
+                    } else {
+                        Text("Nothing logged today yet")
+                            .foregroundColor(.black)
                     }
                 } else {
-                    Text("No card available for this date")
+                    Text("No log available for this date")
                         .foregroundColor(.black)
                 }
             }
@@ -71,9 +87,11 @@ struct HistoryView: View {
                         currentCard = selectedCard
                     } else {
                         colour = .gray
+                        currentCard = Card(date: date)
                     }
                 } else {
                     colour = .gray
+                    currentCard = Card(date: date)
                 }
             }
             .sheet(isPresented: $showingCard) {
@@ -83,10 +101,10 @@ struct HistoryView: View {
                 showingCard.toggle()
             }
             
-            Button("Add card") {
-                let newCard = Card(date: date, score: Int.random(in: 1...10))
-                modelContext.insert(newCard)
-            }
+//            Button("Add card") {
+//                let newCard = Card(date: date, score: Int.random(in: 1...10))
+//                modelContext.insert(newCard)
+//            }
             
             Spacer()
         }

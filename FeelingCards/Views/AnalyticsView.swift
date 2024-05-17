@@ -12,12 +12,8 @@ import SwiftData
 struct AnalyticsView: View {
     @Query var cards: [Card]
     @State private var selectedTab: String = "Week"
-    
-    //    var averageScore: Double {
-    //        let validScores = cards.filter { $0.score > 0 }
-    //        let totalScore = validScores.reduce(0) { $0 + $1.score }
-    //        return !validScores.isEmpty ? Double(totalScore) / Double(validScores.count) : 0
-    //    }
+    @State public var shareItems: [Any] = []
+    @State private var showingShareSheet = false
     
     var body: some View {
         NavigationStack {
@@ -41,13 +37,72 @@ struct AnalyticsView: View {
                     Text("Last Month").tag("Month")
                     //Text("Last Year").tag("Year")
                 }
-                .padding(.top, 20)
+                .padding(.vertical, 21)
                 .padding(.horizontal, 50)
                 .pickerStyle(.segmented)
                 
+                HStack {
+                    Button {
+                        captureAndPrepareShare()
+                    } label: {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.blue)
+                            )
+                    }
+//                    Button {
+//                        shareItems = ["Hello World!"]
+//                        showingShareSheet = true
+//                    } label: {
+//                        Label("Test", systemImage: "square.and.arrow.up")
+//                            .foregroundColor(.white)
+//                            .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+//                            .background(
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .fill(Color.red)
+//                            )
+//                    }
+                }
+                
                 Spacer()
             }
+            .sheet(isPresented: $showingShareSheet) {
+                ShareView(itemsToShare: shareItems)
+            }
             .navigationTitle("Analytics")
+        }
+    }
+    
+    private func captureAndPrepareShare() {
+        if let windowScene = UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .compactMap({ $0 as? UIWindowScene })
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first {
+            
+            let screenshot = windowScene.rootViewController?.view.takeScreenshot()
+            
+            let scale = UIScreen.main.scale
+            let cropY = (screenshot?.size.height ?? 0) * 0.1
+            let cropHeight = (screenshot?.size.height ?? 0) * 0.74
+            let cropRect = CGRect(x: 0, y: cropY * scale, width: (screenshot?.size.width ?? 0) * scale, height: cropHeight * scale)
+            
+            if let croppedImage = screenshot?.cropped(to: cropRect),
+               let imageData = croppedImage.jpegData(compressionQuality: 0.8) {
+                shareItems = [imageData]
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    showingShareSheet = true
+                }
+                
+                print("Image ready for sharing")
+            } else {
+                print("Failed to prepare image data")
+            }
+        } else {
+            print("No key window found")
         }
     }
 }

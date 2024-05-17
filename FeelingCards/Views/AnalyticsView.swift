@@ -53,18 +53,18 @@ struct AnalyticsView: View {
                                     .fill(Color.blue)
                             )
                     }
-//                    Button {
-//                        shareItems = ["Hello World!"]
-//                        showingShareSheet = true
-//                    } label: {
-//                        Label("Test", systemImage: "square.and.arrow.up")
-//                            .foregroundColor(.white)
-//                            .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
-//                            .background(
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .fill(Color.red)
-//                            )
-//                    }
+                    //                    Button {
+                    //                        shareItems = ["Hello World!"]
+                    //                        showingShareSheet = true
+                    //                    } label: {
+                    //                        Label("Test", systemImage: "square.and.arrow.up")
+                    //                            .foregroundColor(.white)
+                    //                            .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+                    //                            .background(
+                    //                                RoundedRectangle(cornerRadius: 10)
+                    //                                    .fill(Color.red)
+                    //                            )
+                    //                    }
                 }
                 
                 Spacer()
@@ -118,18 +118,34 @@ struct WeekGraphView: View {
                 .padding(.bottom, 30)
             
             Chart {
-                ForEach(sortedLastSevenCards, id: \.id) { card in
-                    if let weekday = Calendar.current.dateComponents([.weekday], from: card.date).weekday {
-                        BarMark(x: .value("WeekDay", weekdayString(from: weekday)),
-                                y: .value("Score", card.score))
-                        .foregroundStyle(CardColours.color(for: card.score))
-                    }
+                ForEach(weekData, id: \.weekday) { data in
+                    BarMark(x: .value("WeekDay", weekdayString(from: data.weekday)),
+                            y: .value("Score", data.score))
+                    .foregroundStyle(CardColours.color(for: data.score))
                 }
             }
             .chartYScale(domain: 0...10)
             .aspectRatio(1, contentMode: .fit)
             .padding()
         }
+    }
+    
+    private var weekData: [WeekData] {
+        var data = [WeekData]()
+        let calendar = Calendar.current
+        let today = Date()
+        
+        let lastSevenCards = sortedLastSevenCards
+        
+        for i in 0..<7 {
+            if let date = calendar.date(byAdding: .day, value: -i, to: today) {
+                let weekday = calendar.component(.weekday, from: date)
+                let score = lastSevenCards.first(where: { calendar.isDate($0.date, inSameDayAs: date) })?.score ?? 0
+                data.append(WeekData(weekday: weekday, score: score))
+            }
+        }
+        
+        return data.reversed()
     }
     
     private var sortedLastSevenCards: [Card] {
@@ -149,6 +165,11 @@ struct WeekGraphView: View {
         let totalScore = scores.reduce(0, +)
         return Double(totalScore) / Double(scores.count)
     }
+    
+    struct WeekData {
+        let weekday: Int
+        let score: Int
+    }
 }
 
 struct MonthGraphView: View {
@@ -162,16 +183,33 @@ struct MonthGraphView: View {
                 .padding(.bottom, 30)
             
             Chart {
-                ForEach(sortedLastThirtyCards, id: \.id) { card in
-                    BarMark(x: .value("Date", card.date, unit: .day),
-                            y: .value("Score", card.score))
-                    .foregroundStyle(CardColours.color(for: card.score))
+                ForEach(monthData, id: \.date) { data in
+                    BarMark(x: .value("Date", data.date, unit: .day),
+                            y: .value("Score", data.score))
+                    .foregroundStyle(CardColours.color(for: data.score))
                 }
             }
             .chartYScale(domain: 0...10)
             .aspectRatio(1, contentMode: .fit)
             .padding()
         }
+    }
+    
+    private var monthData: [DayData] {
+        var data = [DayData]()
+        let calendar = Calendar.current
+        let today = Date()
+        
+        let lastThirtyCards = sortedLastThirtyCards
+        
+        for i in 0..<30 {
+            if let date = calendar.date(byAdding: .day, value: -i, to: today) {
+                let score = lastThirtyCards.first(where: { calendar.isDate($0.date, inSameDayAs: date) })?.score ?? 0
+                data.append(DayData(date: date, score: score))
+            }
+        }
+        
+        return data.reversed()
     }
     
     private var sortedLastThirtyCards: [Card] {
@@ -185,6 +223,11 @@ struct MonthGraphView: View {
         guard !scores.isEmpty else { return 0 }
         let totalScore = scores.reduce(0, +)
         return Double(totalScore) / Double(scores.count)
+    }
+    
+    struct DayData {
+        let date: Date
+        let score: Int
     }
 }
 

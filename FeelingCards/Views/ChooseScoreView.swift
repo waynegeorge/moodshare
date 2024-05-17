@@ -75,15 +75,15 @@ struct ChooseScoreView: View {
             navigationPath.append(ViewDestination.chooseWords)
         } label: {
             Text("Next")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.blue)
+                )
+                .padding(.top, 30)
         }
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding(EdgeInsets(top: 5, leading: 40, bottom: 5, trailing: 40))
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.blue)
-        )
-        .padding(.top, 30)
         
         Spacer()
     }

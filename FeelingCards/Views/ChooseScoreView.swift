@@ -70,9 +70,11 @@ struct ChooseScoreView: View {
             }
         }
         
-        Button("Next") {
+        Button {
             card.score = score
             navigationPath.append(ViewDestination.chooseWords)
+        } label: {
+            Text("Next")
         }
         .font(.headline)
         .foregroundColor(.white)
@@ -84,19 +86,5 @@ struct ChooseScoreView: View {
         .padding(.top, 30)
         
         Spacer()
-    }
-}
-
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Card.self, configurations: config)
-        let words = CardDetails.words
-        let example1 = Card(score: 1)
-        let example2 = Card(score: 2, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot.", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return ChooseScoreView(navigationPath: .constant(NavigationPath()), card: example1)
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
     }
 }

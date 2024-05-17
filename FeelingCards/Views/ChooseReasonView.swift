@@ -57,17 +57,3 @@ struct ChooseReasonView: View {
         Spacer()
     }    
 }
-
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Card.self, configurations: config)
-        let words = CardDetails.words
-        let example1 = Card(score: 0)
-        let example2 = Card(score: 8, words: [words[0], words[1], words[2]], positives: "My friends liked my hair a lot", liked: "I liked that I was able to take the complements and not feel awkward", toShare: "I had a great time at school because everyone liked my hair")
-        return ChooseReasonView(navigationPath: .constant(NavigationPath()), card: example2)
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
-    }
-}

@@ -10,7 +10,6 @@
 		0C5467D32B80FDA60004AE45 /* CardGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5467D22B80FDA60004AE45 /* CardGradients.swift */; };
 		0C8715422B62F18F005F2557 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715412B62F18F005F2557 /* WordItem.swift */; };
 		0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */; };
-		0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715452B62F3FA005F2557 /* FlowLayout.swift */; };
 		0C8715482B63EF58005F2557 /* ChooseReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715472B63EF58005F2557 /* ChooseReasonView.swift */; };
 		0C9756B12B13DBAB00F2A236 /* FeelingCardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756B02B13DBAB00F2A236 /* FeelingCardsApp.swift */; };
 		0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756B22B13DBAB00F2A236 /* ContentView.swift */; };
@@ -28,8 +27,8 @@
 		0C9756D52B1401F600F2A236 /* SampleCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9756D42B1401F600F2A236 /* SampleCards.swift */; };
 		0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */; };
 		0CCEB4BA2B5BFA890070FF1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */; };
-		0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD45982B4F2E1700643716 /* Previewer.swift */; };
 		0CDFF90C2BF2963400C02417 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDFF90B2BF2963400C02417 /* Launch Screen.storyboard */; };
+		0CDFF9102BF7B5EC00C02417 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFF90F2BF7B5EC00C02417 /* FlowLayout.swift */; };
 		0CE6F4BD2BB35731001C4AB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE6F4BC2BB35731001C4AB3 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +36,6 @@
 		0C5467D22B80FDA60004AE45 /* CardGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGradients.swift; sourceTree = "<group>"; };
 		0C8715412B62F18F005F2557 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItem.swift; sourceTree = "<group>"; };
 		0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordsView.swift; sourceTree = "<group>"; };
-		0C8715452B62F3FA005F2557 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		0C8715472B63EF58005F2557 /* ChooseReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseReasonView.swift; sourceTree = "<group>"; };
 		0C9756AD2B13DBAB00F2A236 /* FeelingCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelingCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9756B02B13DBAB00F2A236 /* FeelingCardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingCardsApp.swift; sourceTree = "<group>"; };
@@ -56,8 +54,8 @@
 		0C9756D42B1401F600F2A236 /* SampleCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCards.swift; sourceTree = "<group>"; };
 		0CCEB4B72B5BD2E20070FF1A /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		0CCEB4B92B5BFA890070FF1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		0CDD45982B4F2E1700643716 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		0CDFF90B2BF2963400C02417 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0CDFF90F2BF7B5EC00C02417 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		0CE6F4BB2BB07C48001C4AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0CE6F4BC2BB35731001C4AB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,12 +139,11 @@
 		0C9756CA2B13E62900F2A236 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0C8715452B62F3FA005F2557 /* FlowLayout.swift */,
 				0C9756CB2B13E63F00F2A236 /* DateUtility.swift */,
 				0C9756D02B13EFB400F2A236 /* CardColours.swift */,
 				0C9756CD2B13E9D000F2A236 /* CardDetails.swift */,
+				0CDFF90F2BF7B5EC00C02417 /* FlowLayout.swift */,
 				0C9756D42B1401F600F2A236 /* SampleCards.swift */,
-				0CDD45982B4F2E1700643716 /* Previewer.swift */,
 				0C8715412B62F18F005F2557 /* WordItem.swift */,
 				0C5467D22B80FDA60004AE45 /* CardGradients.swift */,
 			);
@@ -225,7 +222,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CCEB4BA2B5BFA890070FF1A /* SettingsView.swift in Sources */,
-				0CDD45992B4F2E1700643716 /* Previewer.swift in Sources */,
 				0C9756CC2B13E63F00F2A236 /* DateUtility.swift in Sources */,
 				0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */,
 				0C8715422B62F18F005F2557 /* WordItem.swift in Sources */,
@@ -240,9 +236,9 @@
 				0C9756C12B13DC1300F2A236 /* Card.swift in Sources */,
 				0C5467D32B80FDA60004AE45 /* CardGradients.swift in Sources */,
 				0CCEB4B82B5BD2E20070FF1A /* ShareView.swift in Sources */,
-				0C8715462B62F3FA005F2557 /* FlowLayout.swift in Sources */,
 				0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */,
 				0C9756C32B13DC4800F2A236 /* AnalyticsView.swift in Sources */,
+				0CDFF9102BF7B5EC00C02417 /* FlowLayout.swift in Sources */,
 				0C9756C72B13DC5600F2A236 /* CardView.swift in Sources */,
 				0C9756B12B13DBAB00F2A236 /* FeelingCardsApp.swift in Sources */,
 			);

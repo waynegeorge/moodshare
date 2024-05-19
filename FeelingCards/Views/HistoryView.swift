@@ -56,9 +56,10 @@ struct HistoryView: View {
                             Text("\(selectedCard.score)")
                                 .font(.title)
                         }
-                        if (selectedCard.words.count != 0 || selectedCard.toShare != "") {
-                            Text("Tap for more")
-                        }
+                        
+                        Text(selectedCard.words.count != 0 || selectedCard.toShare != "" ? "Tap for more" : "")
+                            .frame(height: 15)
+                        
                     } else {
                         Text("Nothing logged today yet")
                             .foregroundColor(.black)
@@ -98,7 +99,9 @@ struct HistoryView: View {
                 CardView(card: currentCard)
             }
             .onTapGesture {
-                showingCard.toggle()
+                if (currentCard.words.count != 0 || currentCard.toShare != "") {
+                    showingCard.toggle()
+                }
             }
             
 //            Button("Add card") {

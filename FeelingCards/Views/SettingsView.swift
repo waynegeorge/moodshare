@@ -13,17 +13,62 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Appearance")) {
-                    Picker("Select Mode", selection: $selectedMode) {
-                        Text("System").tag(AppearanceMode.system)
-                        Text("Light").tag(AppearanceMode.light)
-                        Text("Dark").tag(AppearanceMode.dark)
+                Section ("General"){
+                    HStack {
+                        Text("App Version")
+                        
+                        Spacer()
+                        
+                        Text("\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")")
+                            .foregroundColor(.gray)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
+                    
+                    HStack {
+                        Text("Contact the developer")
+                        
+                        Spacer()
+                        
+                        Button(action: sendEmail) {
+                            Text("Email")
+                        }
+                    }
+                    
+                    Text("Developed by Wayne George")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
                 }
             }
             .navigationTitle("Settings")
         }
+    }
+    
+    func sendEmail() {
+        let recipient = "feedback@waynegeorge.tech"
+        let subject = "Mood Share App Feedback"
+        let body = "Hi,\n\n\n\n\(getAppDetails())"
+        
+        if let url = createEmailUrl(to: recipient, subject: subject, body: body), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else {
+            print("Cannot open mail app")
+        }
+    }
+    
+    func createEmailUrl(to recipient: String, subject: String, body: String) -> URL? {
+        let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "mailto:\(recipient)?subject=\(subjectEncoded)&body=\(bodyEncoded)"
+        return URL(string: urlString)
+    }
+    
+    func getAppDetails() -> String {
+        _ = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "App"
+        let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Unknown Version"
+        let deviceModel = UIDevice.current.model
+        let systemVersion = UIDevice.current.systemVersion
+        
+        return "App: Mood Share, Version: \(appVersion)\nDevice: \(deviceModel), iOS Version: \(systemVersion)"
     }
 }
 

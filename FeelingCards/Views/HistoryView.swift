@@ -104,10 +104,10 @@ struct HistoryView: View {
                 }
             }
             
-//            Button("Add card") {
-//                let newCard = Card(date: date, score: Int.random(in: 1...10))
-//                modelContext.insert(newCard)
-//            }
+            Button("Add card") {
+                let newCard = Card(date: date, score: Int.random(in: 1...10))
+                modelContext.insert(newCard)
+            }
             
             Spacer()
         }

@@ -32,11 +32,11 @@ struct ContentView: View {
                         }
                         .tag(2)
                     
-//                    SettingsView()
-//                        .tabItem {
-//                            Label("Settings", systemImage: "gear")
-//                        }
-//                        .tag(3)
+                    SettingsView()
+                        .tabItem {
+                            Label("Settings", systemImage: "gear")
+                        }
+                        .tag(3)
                 }
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)

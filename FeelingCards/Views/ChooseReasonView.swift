@@ -29,7 +29,7 @@ struct ChooseReasonView: View {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .sheet(isPresented: $showingShareSheet) {
-            ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).", "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words.joined(separator: ", "))."])
+//            ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).", "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words.joined(separator: ", "))."])
         }
         .padding()
         .background(CardColours.color(for: card.score))

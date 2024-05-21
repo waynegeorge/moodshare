@@ -42,7 +42,6 @@ struct ChooseScoreView: View {
         
         .onAppear {
             score = card.score == 0 ? 5 : card.score
-            print(moodLogManager.hasLoggedMood)
         }
         .onDisappear {
             

@@ -28,28 +28,29 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
     
     func scheduleNotifications() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removeAllPendingNotificationRequests()
+        
         guard !moodLogManager.hasLoggedMood else {
             return
         }
         
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removeAllPendingNotificationRequests()
-        
         let content = UNMutableNotificationContent()
-        content.title = "Mood Log Reminder"
-        content.body = "Please log your mood for the day."
+        content.title = "Mood Share Reminder"
+        content.body = "Please log and share your mood for the day."
         content.sound = .default
+        content.badge = 1        
         
-        // Schedule notification for 6 PM
+        // Schedule notification for 6:00 PM
         var dateComponents = DateComponents()
         dateComponents.hour = 18
         dateComponents.minute = 00
         let trigger6PM = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request6PM = UNNotificationRequest(identifier: "moodReminder6PM", content: content, trigger: trigger6PM)
         
-        // Schedule notification for 8 PM
-        dateComponents.hour = 20
-        dateComponents.minute = 0
+        // Schedule notification for 7:00 PM
+        dateComponents.hour = 19
+        dateComponents.minute = 00
         let trigger8PM = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request8PM = UNNotificationRequest(identifier: "moodReminder8PM", content: content, trigger: trigger8PM)
         
@@ -69,8 +70,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         if response.notification.request.identifier == "resetMoodLogFlag" {
             moodLogManager.resetMoodLogFlag()
+        } else {
+            moodLogManager.markMoodAsLogged()
+            center.removePendingNotificationRequests(withIdentifiers: ["moodReminder8PM"])
+            center.setBadgeCount(0, withCompletionHandler: nil)
         }
-        center.setBadgeCount(1, withCompletionHandler: nil)
         completionHandler()
     }
 }

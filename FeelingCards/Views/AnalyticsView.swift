@@ -112,7 +112,7 @@ struct WeekGraphView: View {
     
     var body: some View {
         VStack {
-            Text("Average Score: \(averageScore, specifier: "%.1f")")
+            Text("Average Mood: \(averageScore, specifier: "%.1f")")
                 .font(.title3)
                 .foregroundColor(.primary)
                 .padding(.bottom, 30)
@@ -177,7 +177,7 @@ struct MonthGraphView: View {
     
     var body: some View {
         VStack {
-            Text("Average Score: \(averageScore, specifier: "%.1f")")
+            Text("Average Mood: \(averageScore, specifier: "%.1f")")
                 .font(.title3)
                 .foregroundColor(.primary)
                 .padding(.bottom, 30)

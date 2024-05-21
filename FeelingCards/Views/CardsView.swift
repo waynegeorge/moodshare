@@ -18,6 +18,7 @@ enum ViewDestination: Hashable {
 struct CardsView: View {
     @Query var cards: [Card]
     @Environment(\.modelContext) var modelContext
+    @Environment(\.scenePhase) var scenePhase
     
     @State private var navigationPath = NavigationPath()
     @State private var showingShareSheet = false
@@ -25,67 +26,85 @@ struct CardsView: View {
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            Group {
-                if let lastCard = cards.last {
-                    CardView(card: lastCard)
-                        .onTapGesture {
-                            navigationPath.append(ViewDestination.chooseScore)
-                        }
-                        .background(backgroundForLastCard())
+            ZStack {
+                GeometryReader { geometry in
+                    let imageName = cards.last.map { "Mood\($0.score)" } ?? "Mood0"
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipped()
+                        .ignoresSafeArea()
                 }
-                if let lastCard = cards.last
-                {
-                    if lastCard.score != 0 {
-                        Button {
-                            captureAndPrepareShare()
-                        } label: {
-                            Label("Share", systemImage: "square.and.arrow.up")
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.blue)
-                            )
+                
+                Group {
+                    if let lastCard = cards.last {
+                        CardView(card: lastCard)
+                            .onTapGesture {
+                                navigationPath.append(ViewDestination.chooseScore)
+                            }
+                        
+                        if lastCard.score != 0 {
+                            Button {
+                                captureAndPrepareShare()
+                            } label: {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                                    .foregroundColor(.white)
+                                    .padding(EdgeInsets(top: 5, leading: 30, bottom: 5, trailing: 30))
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.blue)
+                                    )
+                            }
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Spacer()
+                }
+                .navigationDestination(for: ViewDestination.self) { destination in
+                    if let lastCard = cards.last
+                    {
+                        switch destination {
+                        case .chooseScore:
+                            ChooseScoreView(navigationPath: $navigationPath, card: lastCard)
+                        case .chooseWords:
+                            ChooseWordsView(navigationPath: $navigationPath, card: lastCard)
+                        case .chooseReason:
+                            ChooseReasonView(navigationPath: $navigationPath, card: lastCard)
                         }
                     }
                 }
-                Spacer()
-                
-                Spacer()
-            }
-            .navigationDestination(for: ViewDestination.self) { destination in
-                if let lastCard = cards.last
-                {
-                    switch destination {
-                    case .chooseScore:
-                        ChooseScoreView(navigationPath: $navigationPath, card: lastCard)
-                    case .chooseWords:
-                        ChooseWordsView(navigationPath: $navigationPath, card: lastCard)
-                    case .chooseReason:
-                        ChooseReasonView(navigationPath: $navigationPath, card: lastCard)
+                .onAppear {
+                    checkForNewCard()
+                }
+                .onChange(of: scenePhase) { oldPhase, newPhase in
+                    if newPhase == .active {
+                        checkForNewCard()
                     }
                 }
+                .sheet(isPresented: $showingShareSheet) {
+                    ShareView(itemsToShare: shareItems)
+                }
+                .navigationTitle("Mood Share")
             }
-            .onAppear {
-                checkForNewCard()
-                
-            }
-            .sheet(isPresented: $showingShareSheet) {
-                ShareView(itemsToShare: shareItems)
-            }
-            .navigationTitle("Mood Share")
+            .environment(\.modelContext, modelContext)
+            .preferredColorScheme(.dark)
         }
-        .ignoresSafeArea()
-        .environment(\.modelContext, modelContext)
-        .preferredColorScheme(.dark)
     }
     
+    
     private func backgroundForLastCard() -> some View {
-        let imageName = cards.last.map { "Mood\($0.score)" } ?? "defaultBackground"
-        return Image(imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(minWidth: 0, maxWidth: .infinity)
+        let imageName = cards.last.map { "Mood\($0.score)" } ?? "Mood0"
+        print("Using background image: \(imageName)") // Debugging statement
+        return GeometryReader { geometry in
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .clipped()  // Ensures the image doesn't overflow its bounds
+        }
     }
     
     func checkForNewCard() {
@@ -104,7 +123,6 @@ struct CardsView: View {
         
         if existingCard == nil {
             let newCard = Card(date: newCardDate)
-            print("addNewCard: \(newCard.date)")
             modelContext.insert(newCard)
         }
     }
@@ -137,7 +155,7 @@ struct CardsView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     showingShareSheet = true
                 }
-
+                
                 print("Image ready for sharing")
             } else {
                 print("Failed to prepare image data")

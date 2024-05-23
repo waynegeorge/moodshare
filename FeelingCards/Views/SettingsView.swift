@@ -9,11 +9,22 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("appearanceMode") var selectedMode = AppearanceMode.system
-
+    
     var body: some View {
         NavigationView {
             Form {
-                Section ("General"){
+                Section ("About") {
+                    NavigationLink(destination: HowToUseView()) {
+                        Text("About the app")
+                    }
+                    
+                    Text("© 2024 Mood Share. All rights reserved.")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                }
+                
+                Section ("Feedback") {
                     HStack {
                         Text("App Version")
                         
@@ -38,6 +49,8 @@ struct SettingsView: View {
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                 }
+                
+                
             }
             .navigationTitle("Settings")
         }
@@ -76,10 +89,11 @@ enum AppearanceMode: Int, Identifiable {
     case system = 0
     case light = 1
     case dark = 2
-
+    
     var id: Int { self.rawValue }
 }
 
 #Preview {
     SettingsView()
+        .preferredColorScheme(.dark)
 }

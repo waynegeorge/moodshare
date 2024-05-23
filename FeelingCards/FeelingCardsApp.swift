@@ -13,6 +13,7 @@ struct FeelingCardsApp: App {
 
     var body: some Scene {
         WindowGroup {
+            //SplashScreenView()
             ContentView()
                 .environmentObject(appDelegate.moodLogManager)
         }

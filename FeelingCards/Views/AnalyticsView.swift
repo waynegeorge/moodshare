@@ -33,8 +33,8 @@ struct AnalyticsView: View {
                 }
                 
                 Picker("Chart View", selection: $selectedTab) {
-                    Text("Last Week").tag("Week")
-                    Text("Last Month").tag("Month")
+                    Text("Past 7 days").tag("Week")
+                    Text("Past 30 days").tag("Month")
                     //Text("Last Year").tag("Year")
                 }
                 .padding(.vertical, 21)

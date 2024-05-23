@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1C04032BFFDF8700C6C542 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C04022BFFDF8700C6C542 /* HowToUseView.swift */; };
 		0C5467D32B80FDA60004AE45 /* CardGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5467D22B80FDA60004AE45 /* CardGradients.swift */; };
 		0C8715422B62F18F005F2557 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715412B62F18F005F2557 /* WordItem.swift */; };
 		0C8715442B62F1D8005F2557 /* ChooseWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */; };
@@ -32,9 +33,11 @@
 		0CDFF9122BF7FA4C00C02417 /* MoodLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFF9112BF7FA4C00C02417 /* MoodLogManager.swift */; };
 		0CDFF9142BF7FCDF00C02417 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFF9132BF7FCDF00C02417 /* AppDelegate.swift */; };
 		0CE6F4BD2BB35731001C4AB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE6F4BC2BB35731001C4AB3 /* Theme.swift */; };
+		0CFF09042BFE70B200F3F7F7 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFF09032BFE70B200F3F7F7 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C1C04022BFFDF8700C6C542 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
 		0C5467D22B80FDA60004AE45 /* CardGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGradients.swift; sourceTree = "<group>"; };
 		0C8715412B62F18F005F2557 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItem.swift; sourceTree = "<group>"; };
 		0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordsView.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 		0CDFF9132BF7FCDF00C02417 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE6F4BB2BB07C48001C4AB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0CE6F4BC2BB35731001C4AB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		0CFF09032BFE70B200F3F7F7 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				0C9756C22B13DC4800F2A236 /* AnalyticsView.swift */,
+				0C1C04022BFFDF8700C6C542 /* HowToUseView.swift */,
 				0C9756C42B13DC5100F2A236 /* CardsView.swift */,
 				0C9756C62B13DC5600F2A236 /* CardView.swift */,
 				0C9756B22B13DBAB00F2A236 /* ContentView.swift */,
@@ -127,6 +132,7 @@
 				0C9756D22B13F51600F2A236 /* ChooseScoreView.swift */,
 				0C8715432B62F1D8005F2557 /* ChooseWordsView.swift */,
 				0C8715472B63EF58005F2557 /* ChooseReasonView.swift */,
+				0CFF09032BFE70B200F3F7F7 /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,7 +239,9 @@
 				0C9756C92B13DC5900F2A236 /* HistoryView.swift in Sources */,
 				0C8715422B62F18F005F2557 /* WordItem.swift in Sources */,
 				0C9756B32B13DBAB00F2A236 /* ContentView.swift in Sources */,
+				0C1C04032BFFDF8700C6C542 /* HowToUseView.swift in Sources */,
 				0CE6F4BD2BB35731001C4AB3 /* Theme.swift in Sources */,
+				0CFF09042BFE70B200F3F7F7 /* SplashScreenView.swift in Sources */,
 				0C9756C52B13DC5100F2A236 /* CardsView.swift in Sources */,
 				0C9756CE2B13E9D000F2A236 /* CardDetails.swift in Sources */,
 				0C9756D12B13EFB400F2A236 /* CardColours.swift in Sources */,

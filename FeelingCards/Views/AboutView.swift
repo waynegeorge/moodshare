@@ -1,5 +1,5 @@
 //
-//  HowToUseView.swift
+//  AboutView.swift
 //  FeelingCards
 //
 //  Created by Wayne George on 23/05/2024.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HowToUseView: View {
-        let aboutText = """
+struct AboutView: View {
+    let aboutText = """
     Mood Share is a fantastic way to stay connected with your loved ones and gain deeper insights into your own emotions. Whether you're on your way home from work and want to let your partner or family member know how you're feeling before you arrive, or you're at home wanting to support your partner after a hard day, Mood Share has you covered.
     
     With Mood Share, you can easily share your emotions and receive updates on how your partner, loved one, or child is feeling before they walk through the door. It's a quick and easy way to maintain emotional connections and ensure everyone feels heard and supported.
@@ -21,18 +21,16 @@ struct HowToUseView: View {
     var body: some View {
         
         ScrollView {
-                Text("Mood Share: Stay Connected with Your Loved Ones and Yourself")
-                    .padding()
-                    .font(.title3)
-                
+            GroupBox (label: Text("Mood Share: Stay Connected with Your Loved Ones and Yourself"), content: {
                 Text(aboutText)
-                    .padding()
-            }
-        
+                    .padding(.top)
+            })
+            .padding()
+        }
     }
 }
 
 #Preview {
-    HowToUseView()
+    AboutView()
         .preferredColorScheme(.dark)
 }

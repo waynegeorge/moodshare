@@ -12,6 +12,7 @@ struct ChooseWordsView: View {
     @Binding var navigationPath: NavigationPath
     @Bindable var card : Card
     @State private var selection = Set<String>()
+    @State private var showingHelpSheet = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -69,12 +70,24 @@ struct ChooseWordsView: View {
         .foregroundColor(.black)
         .cornerRadius(20.2)
         .navigationBarBackButtonHidden()
+        .sheet(isPresented: $showingHelpSheet) {
+            let helpText = "Words"
+            HelpView(helpText: helpText)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     navigationPath.removeLast()
                 } label: {
                     Image(systemName: "chevron.left")
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.showingHelpSheet = true
+                } label: {
+                    Image(systemName: "info.circle")
                 }
             }
             

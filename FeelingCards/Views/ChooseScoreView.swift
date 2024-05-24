@@ -13,8 +13,9 @@ struct ChooseScoreView: View {
     @Bindable var card : Card
     @State private var score: Int = 5
     @EnvironmentObject var moodLogManager: MoodLogManager
-    
     @Environment(\.dismiss) var dismiss
+    @State private var showingHelpSheet = false
+    
     let numbers = Array(1...10)
     
     var body: some View {
@@ -46,6 +47,10 @@ struct ChooseScoreView: View {
         .onDisappear {
             
         }
+        .sheet(isPresented: $showingHelpSheet) {
+            let helpText = "score"
+            HelpView(helpText: helpText)
+        }
         .padding()
         .background(CardColours.color(for: score))
         .foregroundColor(.black)
@@ -59,6 +64,14 @@ struct ChooseScoreView: View {
                     moodLogManager.markMoodAsLogged()
                 } label: {
                     Image(systemName: "chevron.left")
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.showingHelpSheet = true
+                } label: {
+                    Image(systemName: "info.circle")
                 }
             }
             

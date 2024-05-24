@@ -22,6 +22,7 @@ struct CardsView: View {
     
     @State private var navigationPath = NavigationPath()
     @State private var showingShareSheet = false
+    @State private var showingHelpSheet = false
     @State private var shareItems: [Any] = []
     
     var body: some View {
@@ -83,6 +84,18 @@ struct CardsView: View {
                     if newPhase == .active {
                         checkForNewCard()
                     }
+                }
+                .navigationBarItems(trailing: Button(action: {
+                    self.showingHelpSheet = true
+                }) {
+                    Image(systemName: "info.circle")
+                        .imageScale(.large)
+                        .foregroundColor(.white)
+                }
+                )
+                .sheet(isPresented: $showingHelpSheet) {
+                    let helpText = "Main"
+                    HelpView(helpText: helpText)
                 }
                 .sheet(isPresented: $showingShareSheet) {
                     ShareView(itemsToShare: shareItems)

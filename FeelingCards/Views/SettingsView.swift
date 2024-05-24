@@ -14,7 +14,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section ("About") {
-                    NavigationLink(destination: HowToUseView()) {
+                    NavigationLink(destination: AboutView()) {
                         Text("About the app")
                     }
                     

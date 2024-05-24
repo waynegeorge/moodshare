@@ -14,6 +14,7 @@ struct AnalyticsView: View {
     @State private var selectedTab: String = "Week"
     @State public var shareItems: [Any] = []
     @State private var showingShareSheet = false
+    @State private var showingHelpSheet = false
     
     var body: some View {
         NavigationStack {
@@ -72,6 +73,18 @@ struct AnalyticsView: View {
             .sheet(isPresented: $showingShareSheet) {
                 ShareView(itemsToShare: shareItems)
             }
+            .sheet(isPresented: $showingHelpSheet) {
+                let helpText = "Analytics"
+                HelpView(helpText: helpText)
+            }
+            .navigationBarItems(trailing: Button(action: {
+                self.showingHelpSheet = true
+            }) {
+                Image(systemName: "info.circle")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
+            }
+            )
             .navigationTitle("Analytics")
         }
     }

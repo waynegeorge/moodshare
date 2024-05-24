@@ -12,6 +12,7 @@ struct ChooseReasonView: View {
     @Binding var navigationPath: NavigationPath
     @Bindable var card : Card
     @State private var showingShareSheet = false
+    @State private var showingHelpSheet = false
     
     var body: some View {
         VStack {
@@ -31,6 +32,10 @@ struct ChooseReasonView: View {
         .sheet(isPresented: $showingShareSheet) {
 //            ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).", "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words.joined(separator: ", "))."])
         }
+        .sheet(isPresented: $showingHelpSheet) {
+            let helpText = "Reason"
+            HelpView(helpText: helpText)
+        }
         .padding()
         .background(CardColours.color(for: card.score))
         .foregroundColor(.black)
@@ -42,6 +47,14 @@ struct ChooseReasonView: View {
                     navigationPath.removeLast()
                 } label: {
                     Image(systemName: "chevron.left")
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.showingHelpSheet = true
+                } label: {
+                    Image(systemName: "info.circle")
                 }
             }
             

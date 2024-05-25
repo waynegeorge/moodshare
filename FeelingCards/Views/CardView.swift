@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CardView: View {
     @Bindable var card : Card
+    @State private var width: CGFloat = 400
+    @State private var height: CGFloat = 570
     
     var body: some View {
         VStack {
@@ -70,6 +72,13 @@ struct CardView: View {
         .background(CardColours.color(for: card.score, opacity: 0.75))
         .foregroundColor(.black)
         .cornerRadius(20.2)
-        .frame(width: 400, height: 570)
+        .frame(width: width, height: height)
+        .onAppear() {
+            // for iphone SE
+            let screenWidth = UIScreen.main.bounds.width
+            if screenWidth < 390 {
+                height = 300
+            }
+        }
     }
 }

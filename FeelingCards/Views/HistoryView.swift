@@ -26,7 +26,7 @@ struct HistoryView: View {
     }()
     
     //TODO remove
-    @Environment(\.modelContext) var modelContext
+    //@Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationStack {

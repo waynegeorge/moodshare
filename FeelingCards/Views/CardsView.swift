@@ -24,6 +24,7 @@ struct CardsView: View {
     @State private var showingShareSheet = false
     @State private var showingHelpSheet = false
     @State private var shareItems: [Any] = []
+    @State private var smallScreen = false
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
@@ -39,11 +40,19 @@ struct CardsView: View {
                 }
                 
                 Group {
+                    if smallScreen {
+                        Spacer()
+                    }
+                    
                     if let lastCard = cards.last {
                         CardView(card: lastCard)
                             .onTapGesture {
                                 navigationPath.append(ViewDestination.chooseScore)
                             }
+                        
+                        if smallScreen {
+                            Spacer()
+                        }
                         
                         if lastCard.score != 0 {
                             Button {
@@ -60,9 +69,11 @@ struct CardsView: View {
                         }
                     }
                     
-                    Spacer()
-                    
-                    Spacer()
+                    if !smallScreen {
+                        Spacer()
+                        
+                        Spacer()
+                    }
                 }
                 .navigationDestination(for: ViewDestination.self) { destination in
                     if let lastCard = cards.last
@@ -78,6 +89,11 @@ struct CardsView: View {
                     }
                 }
                 .onAppear {
+                    // for iphone SE
+                    let screenWidth = UIScreen.main.bounds.width
+                    if screenWidth < 390 {
+                        smallScreen = true
+                    }
                     checkForNewCard()
                 }
                 .onChange(of: scenePhase) { oldPhase, newPhase in

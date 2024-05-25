@@ -33,7 +33,11 @@ struct ChooseReasonView: View {
 //            ShareView(itemsToShare: ["Today I feel like a \(card.score) \(CardDetails.emojiScale[card.score - 1]).", "I feel this way because \(card.toShare).", "Words I've chosen to describe how I feel are \(card.words.joined(separator: ", "))."])
         }
         .sheet(isPresented: $showingHelpSheet) {
-            let helpText = "Reason"
+            let helpText = """
+                Document your thoughts and feelings, explaining why you've given yourself a particular score.
+                
+                Reflect on what actions you can take to improve your mood and well-being.
+                """
             HelpView(helpText: helpText)
         }
         .padding()
@@ -48,6 +52,7 @@ struct ChooseReasonView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
+                .foregroundColor(.white)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -56,6 +61,7 @@ struct ChooseReasonView: View {
                 } label: {
                     Image(systemName: "info.circle")
                 }
+                .foregroundColor(.white)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -64,6 +70,7 @@ struct ChooseReasonView: View {
                 } label: {
                     Text("Done")
                 }
+                .foregroundColor(.white)
             }
         }
         

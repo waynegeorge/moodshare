@@ -48,7 +48,11 @@ struct ChooseScoreView: View {
             
         }
         .sheet(isPresented: $showingHelpSheet) {
-            let helpText = "score"
+            let helpText = """
+                Easily score your mood from 1 to 10.
+                        
+                A simple yet powerful way to keep track of how you're feeling each day.
+                """
             HelpView(helpText: helpText)
         }
         .padding()
@@ -65,6 +69,7 @@ struct ChooseScoreView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
+                .foregroundColor(.white)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -73,6 +78,7 @@ struct ChooseScoreView: View {
                 } label: {
                     Image(systemName: "info.circle")
                 }
+                .foregroundColor(.white)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -83,12 +89,13 @@ struct ChooseScoreView: View {
                 } label: {
                     Text("Done")
                 }
+                .foregroundColor(.white)
             }
         }
         
         Button {
             card.score = score
-            navigationPath.append(ViewDestination.chooseWords)            
+            navigationPath.append(ViewDestination.chooseWords)
             moodLogManager.markMoodAsLogged()
         } label: {
             Text("Next")

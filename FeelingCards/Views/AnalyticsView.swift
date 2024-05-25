@@ -74,7 +74,11 @@ struct AnalyticsView: View {
                 ShareView(itemsToShare: shareItems)
             }
             .sheet(isPresented: $showingHelpSheet) {
-                let helpText = "Analytics"
+                let helpText = """
+                    Monitor your mood over time to identify trends and triggers.
+                    
+                    Understand the factors affecting your mood, such as a long workday, and plan better self-care or communicate your needs to loved ones.
+                    """
                 HelpView(helpText: helpText)
             }
             .navigationBarItems(trailing: Button(action: {

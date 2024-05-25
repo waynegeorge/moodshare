@@ -94,7 +94,11 @@ struct CardsView: View {
                 }
                 )
                 .sheet(isPresented: $showingHelpSheet) {
-                    let helpText = "Main"
+                    let helpText = """
+                        Tap the card to log your mood for the day. Once logged, you can tap anytime throughout the day to update it.
+                        
+                        You can then press the share button to share your log via your preferred method
+                        """
                     HelpView(helpText: helpText)
                 }
                 .sheet(isPresented: $showingShareSheet) {

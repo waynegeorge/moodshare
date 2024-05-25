@@ -71,7 +71,11 @@ struct ChooseWordsView: View {
         .cornerRadius(20.2)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showingHelpSheet) {
-            let helpText = "Words"
+            let helpText = """
+                Choose words to help you explore the reasons behind your mood. 
+                
+                Understand the deeper emotions and circumstances influencing your feelings.
+                """
             HelpView(helpText: helpText)
         }
         .toolbar {
@@ -81,6 +85,7 @@ struct ChooseWordsView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
+                .foregroundColor(.white)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -89,6 +94,7 @@ struct ChooseWordsView: View {
                 } label: {
                     Image(systemName: "info.circle")
                 }
+                .foregroundColor(.white)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -97,6 +103,7 @@ struct ChooseWordsView: View {
                 } label: {
                     Text("Done")
                 }
+                .foregroundColor(.white)
             }
         }
         .onAppear() {

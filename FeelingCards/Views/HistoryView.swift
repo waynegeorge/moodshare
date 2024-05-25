@@ -26,7 +26,7 @@ struct HistoryView: View {
     }()
     
     //TODO remove
-    //@Environment(\.modelContext) var modelContext
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationStack {
@@ -101,7 +101,13 @@ struct HistoryView: View {
                     CardView(card: currentCard)
                 }
                 .sheet(isPresented: $showingHelpSheet) {
-                    let helpText = "Archive"
+                    let helpText = """
+                        Reviewing your past mood logs offers valuable insights into your emotional patterns and triggers.
+                        
+                        By identifying trends in your mood over time, you can understand how different factors impact your emotional well-being.
+                        
+                        This awareness enables you to plan more effective self-care strategies and communicate your needs more clearly to those around you. 
+                        """
                     HelpView(helpText: helpText)
                 }
                 .onTapGesture {
@@ -109,10 +115,10 @@ struct HistoryView: View {
                         showingCard.toggle()
                     }
                 }
-                //            Button("Add card") {
-                //                let newCard = Card(date: date, score: Int.random(in: 1...10))
-                //                modelContext.insert(newCard)
-                //            }
+//                            Button("Add card") {
+//                                let newCard = Card(date: date, score: Int.random(in: 1...10))
+//                                modelContext.insert(newCard)
+//                            }
                 
                 Spacer()
             }            

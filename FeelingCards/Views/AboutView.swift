@@ -13,7 +13,7 @@ struct AboutView: View {
     
     With Mood Share, you can easily share your emotions and receive updates on how your partner, loved one, or child is feeling before they walk through the door. It's a quick and easy way to maintain emotional connections and ensure everyone feels heard and supported.
     
-    Additionally, Mood Share can serve as a personal mood tracker. You can monitor your feelings, analyze patterns in your emotions or behavior, and keep track of these patterns over time. This feature is not only useful for personal reflection but can also be shared with your therapist, providing a valuable tool for deeper understanding and more effective therapy sessions.
+    Additionally, Mood Share can serve as a personal mood tracker. You can monitor your feelings, analyse patterns in your emotions or behaviour, and keep track of these patterns over time. This feature is not only useful for personal reflection but can also be shared with your therapist, providing a valuable tool for deeper understanding and more effective therapy sessions.
     
     Stay connected, understand your emotions, and support your loved ones with Mood Share — the convenient and effective way to share and track moods.
     """

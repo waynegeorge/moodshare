@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("appearanceMode") var selectedMode = AppearanceMode.system
+    @State private var showingShareSheet = false
     
     var body: some View {
         NavigationView {
@@ -16,6 +17,18 @@ struct SettingsView: View {
                 Section ("About") {
                     NavigationLink(destination: AboutView()) {
                         Text("About the app")
+                    }
+                    
+                    HStack {
+                        Text("Share the app")
+                        
+                        Spacer()
+                        
+                        Button {
+                            showingShareSheet.toggle()
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
                     }
                     
                     Text("© 2024 Mood Share. All rights reserved.")
@@ -51,6 +64,9 @@ struct SettingsView: View {
                 }
                 
                 
+            }
+            .sheet(isPresented: $showingShareSheet) {
+                ShareView(itemsToShare: ["Get the Mood Share app: https://apps.apple.com/gb/app/mood-share/id6502838346"])
             }
             .navigationTitle("Settings")
         }

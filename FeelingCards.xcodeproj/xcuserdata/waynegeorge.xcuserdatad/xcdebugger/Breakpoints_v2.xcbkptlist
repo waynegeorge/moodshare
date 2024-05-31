@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F0EAE8E0-7C01-4943-A7B9-A6C410EBD359"
+            uuid = "FB290ACA-5CB6-46D6-BE7D-37613D9BAB8A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FeelingCards/Views/CardView.swift"
+            filePath = "FeelingCards/Views/CardsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "backgroundForLastCard()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,17 +1,17 @@
 //
-//  ShareView.swift
+//  ShareAnyView.swift
 //  FeelingCards
 //
-//  Created by Wayne George on 20/01/2024.
+//  Created by Wayne George on 29/05/2024.
 //
 
 import SwiftUI
 
-struct ShareView: UIViewControllerRepresentable {
-    var itemsToShare: UIImage
+struct ShareAnyView: UIViewControllerRepresentable {
+    var itemsToShare: [Any]
     
     func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: [itemsToShare], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
         
         // Exclude specific activity types
         controller.excludedActivityTypes = [
@@ -34,9 +34,4 @@ struct ShareView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
         // No need to update the controller in this case
     }
-}
-
-struct IdentifiableImage: Identifiable {
-    let id = UUID()
-    let image: UIImage
 }

@@ -23,7 +23,7 @@ struct CardsView: View {
     @State private var navigationPath = NavigationPath()
     @State private var showingShareSheet = false
     @State private var showingHelpSheet = false
-    @State private var shareItems: [Any] = []
+    @State private var shareItems: IdentifiableImage?
     @State private var smallScreen = false
     
     var body: some View {
@@ -117,8 +117,8 @@ struct CardsView: View {
                         """
                     HelpView(helpText: helpText)
                 }
-                .sheet(isPresented: $showingShareSheet) {
-                    ShareView(itemsToShare: shareItems)
+                .sheet(item: $shareItems) { image in
+                    ShareView(itemsToShare: image.image)
                 }
                 .navigationTitle("Mood Share")
             }
@@ -184,12 +184,9 @@ struct CardsView: View {
             
             if let croppedImage = screenshot?.cropped(to: cropRect),
                let imageData = croppedImage.jpegData(compressionQuality: 0.8) {
-                shareItems = [imageData]
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    showingShareSheet = true
+                if let image = UIImage(data: imageData) {
+                    shareItems = IdentifiableImage(image: image)
                 }
-                
-                print("Image ready for sharing")
             } else {
                 print("Failed to prepare image data")
             }

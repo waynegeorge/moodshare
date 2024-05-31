@@ -12,7 +12,7 @@ import SwiftData
 struct AnalyticsView: View {
     @Query var cards: [Card]
     @State private var selectedTab: String = "Week"
-    @State public var shareItems: [Any] = []
+    @State public var shareItems: IdentifiableImage?
     @State private var showingShareSheet = false
     @State private var showingHelpSheet = false
     
@@ -70,8 +70,8 @@ struct AnalyticsView: View {
                 
                 Spacer()
             }
-            .sheet(isPresented: $showingShareSheet) {
-                ShareView(itemsToShare: shareItems)
+            .sheet(item: $shareItems) { image in
+                ShareView(itemsToShare: image.image)
             }
             .sheet(isPresented: $showingHelpSheet) {
                 let helpText = """
@@ -109,12 +109,9 @@ struct AnalyticsView: View {
             
             if let croppedImage = screenshot?.cropped(to: cropRect),
                let imageData = croppedImage.jpegData(compressionQuality: 0.8) {
-                shareItems = [imageData]
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    showingShareSheet = true
+                if let image = UIImage(data: imageData) {
+                    shareItems = IdentifiableImage(image: image)
                 }
-                
-                print("Image ready for sharing")
             } else {
                 print("Failed to prepare image data")
             }

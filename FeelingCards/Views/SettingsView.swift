@@ -66,7 +66,7 @@ struct SettingsView: View {
                 
             }
             .sheet(isPresented: $showingShareSheet) {
-                ShareView(itemsToShare: ["Get the Mood Share app: https://apps.apple.com/gb/app/mood-share/id6502838346"])
+                ShareAnyView(itemsToShare: ["Get the Mood Share app: https://apps.apple.com/gb/app/mood-share/id6502838346"])
             }
             .navigationTitle("Settings")
         }

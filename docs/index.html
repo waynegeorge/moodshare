@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mood Share — Stay connected to yourself and your loved ones</title>
+<meta name="description" content="Mood Share is a simple iOS app to share how you're feeling with loved ones and track your own moods over time. No accounts, no data collection.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Mood Share">
+<meta property="og:description" content="Stay connected to yourself and your loved ones.">
+<meta property="og:image" content="images/app-icon.png">
+<meta property="og:type" content="website">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+
+<style>
+    :root {
+        --accent: #17a89e;
+        --accent-soft: #e7f6f4;
+        --ink: #1a1a1a;
+        --muted: #6b7280;
+        --bg: #ffffff;
+        --line: #ececec;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --accent: #2dd4bf;
+            --accent-soft: #14302d;
+            --ink: #f3f4f6;
+            --muted: #9ca3af;
+            --bg: #0e0f10;
+            --line: #232527;
+        }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+        text-align: center;
+        padding: 96px 0 64px;
+    }
+    .app-icon {
+        width: 112px;
+        height: 112px;
+        border-radius: 25%;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+        margin-bottom: 28px;
+    }
+    h1 {
+        font-size: clamp(2.2rem, 6vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin: 0 0 16px;
+        font-weight: 700;
+    }
+    .tagline {
+        font-size: clamp(1.05rem, 3vw, 1.25rem);
+        color: var(--muted);
+        margin: 0 auto 36px;
+        max-width: 30ch;
+    }
+    .badge img {
+        height: 54px;
+        width: auto;
+    }
+    @media (prefers-color-scheme: dark) {
+        /* keep the black App Store badge legible on dark */
+        .badge {
+            display: inline-block;
+            background: #fff;
+            padding: 6px 10px;
+            border-radius: 12px;
+        }
+    }
+
+    /* Features */
+    .features {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 24px 0 64px;
+        border-top: 1px solid var(--line);
+    }
+    @media (min-width: 560px) {
+        .features { grid-template-columns: 1fr 1fr; gap: 36px 40px; }
+    }
+    .feature h3 {
+        font-size: 1.05rem;
+        margin: 0 0 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .feature h3 .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: none;
+    }
+    .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.97rem;
+    }
+
+    /* Privacy strip */
+    .privacy-note {
+        text-align: center;
+        background: var(--accent-soft);
+        border-radius: 16px;
+        padding: 28px 24px;
+        margin-bottom: 72px;
+    }
+    .privacy-note p { margin: 0 0 4px; }
+    .privacy-note .small { color: var(--muted); font-size: 0.9rem; }
+
+    /* Footer */
+    footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 0 48px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.88rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    footer .links { margin-bottom: 8px; }
+    footer .links a { margin: 0 10px; }
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <header class="hero">
+            <img class="app-icon" src="images/app-icon.png" alt="Mood Share app icon">
+            <h1>Mood Share</h1>
+            <p class="tagline">Stay connected to yourself and your loved ones.</p>
+            <a class="badge" href="https://apps.apple.com/gb/app/mood-share/id6502838346">
+                <img src="images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store">
+            </a>
+        </header>
+
+        <section class="features">
+            <div class="feature">
+                <h3><span class="dot"></span>Share how you feel</h3>
+                <p>Let your partner or family know your mood before you walk through the door — a quick, gentle way to stay in tune.</p>
+            </div>
+            <div class="feature">
+                <h3><span class="dot"></span>Track your moods</h3>
+                <p>Log how you're feeling over time and spot patterns in your emotions and behaviour.</p>
+            </div>
+            <div class="feature">
+                <h3><span class="dot"></span>Reflect &amp; share</h3>
+                <p>Use your history as a tool for personal reflection, or share it with a therapist for deeper insight.</p>
+            </div>
+            <div class="feature">
+                <h3><span class="dot"></span>Private by design</h3>
+                <p>No accounts and no tracking. Your moods stay yours.</p>
+            </div>
+        </section>
+
+        <section class="privacy-note">
+            <p>Mood Share collects <strong>no personal data</strong>.</p>
+            <p class="small">Read the full <a href="privacy.html" style="color:var(--accent);text-decoration:none;">Privacy Policy</a>.</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div class="links">
+                <a href="privacy.html">Privacy</a>
+                <a href="mailto:feedback@moodshare.co.uk">Contact</a>
+                <a href="https://apps.apple.com/gb/app/mood-share/id6502838346">App Store</a>
+            </div>
+            <div>&copy; Mood Share</div>
+        </div>
+    </footer>
+</body>
+</html>
